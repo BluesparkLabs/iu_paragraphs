@@ -1,0 +1,21 @@
+name: Paragraphs IU
+type: module
+description: Paragraphs IU
+core: 8.x
+package: Paragraphs
+dependencies:
+  - paragraphs
+  - entity_reference_revisions
+  - field
+  - field_layout
+  - file
+  - filter
+  - image
+  - layout_discovery
+  - link
+  - options
+  - system
+  - text
+  - user
+  - views
+  - viewsreference

@@ -1,0 +1,29 @@
+iu-accordion:
+  js:
+    js/paragraphs-iu-accordion.behaviors.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/jquery.ui.accordion
+iu-carousel:
+  css:
+    component:
+      css/paragraphs-iu-carousel.min.css: { }
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+iu-column:
+  css:
+    component:
+      css/paragraphs-iu-column.css: { }
+iu-row:
+  css:
+    component:
+      css/paragraphs-iu-row.css: { }
+iu-tabs:
+  js:
+    js/paragraphs-iu-tabs.behaviors.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/jquery.ui.tabs

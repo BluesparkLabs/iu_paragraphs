@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains paragraphs_iu.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_theme().
+ */
+function paragraphs_iu_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__iu_accordion' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_carousel' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_tabs' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_column' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_row' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_image' => [
+      'base hook' => 'paragraph',
+    ],
+  ];
+}

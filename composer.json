@@ -1,13 +1,13 @@
 {
-  "name": "mishac/paragraphs_pack",
-  "description": "Default paragraph types",
+  "name": "mishac/paragraphs_iu",
+  "description": "Paragraph types for Indiana University Web Framework",
   "type": "drupal-module",
-  "homepage": "https://github.com/mishac/paragraphs_pack",
+  "homepage": "https://github.com/mishac/paragraphs_iu",
   "authors": [
     {
-      "name": "Misha Chitharanjan",
-      "email": "mishac@mishac.com",
-      "homepage": "https://mishac.com",
+      "name": "James Wilson",
+      "email": "jrwilson3@gmail.com",
+      "homepage": "https://bluespark.com",
       "role": "Maintainer"
     }
   ],

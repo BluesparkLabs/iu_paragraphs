@@ -1,0 +1,83 @@
+uuid: b77b4e34-db2f-4170-9e82-c7ca41334991
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.iu_column_content
+    - paragraphs.paragraphs_type.iu_accordion
+    - paragraphs.paragraphs_type.iu_block
+    - paragraphs.paragraphs_type.iu_carousel
+    - paragraphs.paragraphs_type.iu_column
+    - paragraphs.paragraphs_type.iu_image
+    - paragraphs.paragraphs_type.iu_row
+    - paragraphs.paragraphs_type.iu_tabs
+    - paragraphs.paragraphs_type.iu_text
+    - paragraphs.paragraphs_type.iu_view
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 67lMN24x3Y9wMt9qqGnbUmxQZof4OWVzEHoQXGYWrQs
+id: paragraph.iu_column.iu_column_content
+field_name: iu_column_content
+entity_type: paragraph
+bundle: iu_column
+label: 'Column Content'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      iu_accordion: iu_accordion
+      iu_block: iu_block
+      iu_carousel: iu_carousel
+      iu_image: iu_image
+      iu_row: iu_row
+      iu_tabs: iu_tabs
+      iu_text: iu_text
+      iu_view: iu_view
+    target_bundles_drag_drop:
+      iu_accordion:
+        enabled: true
+        weight: 14
+      iu_accordion_section:
+        weight: 15
+        enabled: false
+      iu_block:
+        enabled: true
+        weight: 16
+      iu_carousel:
+        enabled: true
+        weight: 17
+      iu_columns:
+        weight: 18
+        enabled: false
+      iu_column_wrapper:
+        weight: 19
+        enabled: false
+      iu_image:
+        enabled: true
+        weight: 20
+      iu_row:
+        enabled: true
+        weight: 21
+      iu_tabs:
+        enabled: true
+        weight: 22
+      iu_tab_section:
+        weight: 23
+        enabled: false
+      iu_text:
+        enabled: true
+        weight: 24
+      iu_view:
+        enabled: true
+        weight: 25
+      iu_column:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

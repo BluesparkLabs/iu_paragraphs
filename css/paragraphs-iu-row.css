@@ -1,0 +1,8 @@
+.field--name-field-iu-row-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.field--name-field-iu-row-content .field__item {
+  flex: 1 1 0;
+}

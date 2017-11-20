@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.iu_slide_interval
+    - paragraphs.paragraphs_type.iu_carousel
+  module:
+    - options
+id: paragraph.iu_carousel.iu_slide_interval
+field_name: iu_slide_interval
+entity_type: paragraph
+bundle: iu_carousel
+label: 'Slide Interval'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'false'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

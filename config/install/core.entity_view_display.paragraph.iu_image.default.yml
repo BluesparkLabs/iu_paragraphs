@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.iu_image.iu_image_field
+    - field.field.paragraph.iu_image.iu_link
+    - paragraphs.paragraphs_type.iu_image
+  module:
+    - image
+    - link
+    - options
+id: paragraph.iu_image.default
+targetEntityType: paragraph
+bundle: iu_image
+mode: default
+content:
+  iu_image_field:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  iu_link:
+    weight: 3
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    type: link_separate
+hidden:
+  created: true
+  uid: true
