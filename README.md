@@ -1,31 +1,59 @@
 # Paragraphs for Indiana University
 
-This module defines Paragraph types for 'chunks' in the Pattern Library from
-the [IU Web Style Guide][1].  Forked from [Paragraphs Pack][2] based on jQuery
-UI widgets, which was forked from [Bootstrap Paragraphs][3] based on Bootstrap
-widgets. Specific classnames and code has been modified where necessary to
-conform to CSS class names and HTML structure dictated by the IU Framework.
+This module provides custom Paragraph types for building complex pages comprised of elements from the [IU Pattern Library][1] like <em>section,
+grids, and chunks</em>  that conform to the design standards in the
+[IU Web Style Guide][1].
+
+This module should be used in combination with the [IU Drupal Theme][3].
 
 ![Complex IU Chunk Layout](https://styleguide.iu.edu/images/greybox2.png)
 
 
-### Currently defined paragraph types:
+# Supported widgets
 
+Paragraph types currently available with this module include:
+
+* Section - the top-level Paragraph type that you should add to your content
+  types; it supports background colors and custom height/width and separators
+  logic.
 * Text
 * Image
-* Row - will display its children as equal width columns using flexbox
-* Column - displays children vertically, most usefully as a child of a Row paragraph
-* Block - embed a drupal block
-* Accordion + Accordion Section - display paragraphs as an IU Framework Accordion
-* Tabs + Tab section - display paragraphs as IU Framework Tabs
+* Carousel
+* Accordion
+* Tabs
+* Grid Buider - Build rows of equal-width <em>grid item</em> columns.
+* Drupal Block - Embed a Drupal block inside a Paragraph.
+* Drupal View - Embed a Drupal view in a Paragraph via viewsreference module.
+* Form - Embeds a Drupal webform via the included iu_paragraphs_webform
+  submodule.
 
-### Provided by submodules
-* iu_paragraphs_webform: a paragraph type that embeds a drupal webform
 
-### TBD:
-* Carousel - need to decide whether to keep this and choose a specific carousel plugin, or remove it.
-* Contact - Bootstrap_paragraphs has this.
+# Roadmap
 
-[1]: https://styleguide.iu.edu/pattern-library/chunks/index.html (IU Style Guide Chunks)
-[2]: https://github.com/mishac/paragraphs_pack (Paragraphs Pack)
-[3]: https://www.drupal.org/project/bootstrap_paragraphs (Bootstrap Paragraphs)
+The following widgets still need to be implemented to completely support the
+IU Framework:
+
+* Background images in Sections
+* Call To Action
+* Callouts & Pullquotes
+* Feature
+* Panels
+* Social Media Items
+* Stat
+* Video & Audio
+
+# Credits
+
+* [Indiana University Libraries][4] - for sponsoring initial development.
+* [Bluespark][5] - for sponsoring ongoing development.
+
+Special thanks to [Paragraphs Pack][6] and [Bootstrap Paragraphs][7], both
+of which provided the initial code from which this module was forked.
+
+[1]: https://styleguide.iu.edu/pattern-library/ (IU Pattern Library)
+[2]: https://styleguide.iu.edu/ (IU Style Guide)
+[3]: https://drupal.org/project/iu (IU Drupal Theme)
+[4]: https://libraries.indiana.edu (IU Libraries)
+[5]: https://www.bluespark.com (Bluespark)
+[6]: https://github.com/mishac/paragraphs_pack (Paragraphs Pack)
+[7]: https://www.drupal.org/project/bootstrap_paragraphs (Bootstrap Paragraphs)
