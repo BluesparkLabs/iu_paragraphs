@@ -4,6 +4,13 @@ dependencies:
   config:
     - field.field.paragraph.iu_block.iu_block
     - paragraphs.paragraphs_type.iu_block
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.iu_block.default
 targetEntityType: paragraph
 bundle: iu_block
@@ -17,6 +24,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
 hidden:
   created: true
   status: true

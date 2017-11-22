@@ -2,4 +2,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: iu_view
-label: View
+label: 'Drupal View'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

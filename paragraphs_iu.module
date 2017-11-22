@@ -22,14 +22,74 @@ function paragraphs_iu_theme($existing, $type, $theme, $path) {
     'paragraph__iu_tabs' => [
       'base hook' => 'paragraph',
     ],
-    'paragraph__iu_column' => [
+    'paragraph__iu_grid_builder' => [
       'base hook' => 'paragraph',
     ],
-    'paragraph__iu_row' => [
+    'paragraph__iu_grid_item' => [
       'base hook' => 'paragraph',
     ],
     'paragraph__iu_image' => [
       'base hook' => 'paragraph',
     ],
+    'paragraph__iu_section' => [
+      'base hook' => 'paragraph',
+    ],
   ];
+}
+
+/**
+ * Prepares variables for `paragraph--iu-section.html.twig`.
+ */
+function paragraphs_iu_preprocess_paragraph__iu_section(&$variables) {
+  $p = $variables['paragraph'];
+
+  // Map hex bgcolor to classnames from IU framework.
+  $bgcolor = $p->iu_section_bgcolor->getValue();
+  $bgcolor_classes = [
+    '#990000' => 'bg-crimson bg-dark',
+    '#4a3c31' => 'bg-mahogany bg-dark',
+    '#edebeb' => 'bg-gray',
+    '#f1be48' => 'bg-gold',
+    '#dc8823' => 'bg-gold-dark',
+    '#008264' => 'bg-mint bg-dark',
+    '#285c4d' => 'bg-mint-dark bg-dark',
+    '#006298' => 'bg-midnight bg-dark',
+    '#01426a' => 'bg-midnight-dark bg-dark',
+    '#66435a' => 'bg-majestic bg-dark',
+    '#512a44' => 'bg-majestic-dark bg-dark',
+    '#aca39a' => 'bg-limestone',
+    '#83786f' => 'bg-limestone-dark',
+    '#191919' => 'bg-black bg-dark',
+    '#000000' => 'bg-full-black bg-dark',
+    'none' => 'bg-none',
+  ];
+  $hex = !empty($bgcolor[0]['color']) ? $bgcolor[0]['color'] : 'none';
+  $variables['bgcolor'] = !empty($bgcolor_classes[$hex]) ? $bgcolor_classes[$hex] : 'bg-none';
+
+  // Setup horizontal rule variable for template usage.
+  $hr = $p->iu_section_horizontal_rule->getValue();
+  $variables['hr'] = !empty($hr[0]['value']);
+
+  // Setup height variable for template usage.
+  $height = $p->iu_section_height->getValue();
+  $variables['height'] = !empty($height[0]['value']) ? $height[0]['value'] : 'standard';
+
+  // Setup width variable for template usage.
+  $width = $p->iu_section_width->getValue();
+  $variables['width'] = !empty($width[0]['value']) ? $width[0]['value'] : 'standard';
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function paragraphs_iu_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+
+  // Improve dropdown default option of '- None -'.
+  $field_definition = $context['items']->getFieldDefinition();
+  if ($field_definition->getName() == 'iu_section_width') {
+    $element['#options']['_none'] = t('Standard width');
+  }
+  if ($field_definition->getName() == 'iu_section_height') {
+    $element['#options']['_none'] = t('Standard height');
+  }
 }

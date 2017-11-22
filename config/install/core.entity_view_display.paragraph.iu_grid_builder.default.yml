@@ -2,29 +2,28 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.iu_block.iu_block
-    - paragraphs.paragraphs_type.iu_block
+    - field.field.paragraph.iu_grid_builder.iu_grid_builder_columns
+    - paragraphs.paragraphs_type.iu_grid_builder
   module:
+    - entity_reference_revisions
     - field_layout
     - layout_discovery
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
-id: paragraph.iu_block.default
+id: paragraph.iu_grid_builder.default
 targetEntityType: paragraph
-bundle: iu_block
+bundle: iu_grid_builder
 mode: default
 content:
-  iu_block:
+  iu_grid_builder_columns:
+    type: entity_reference_revisions_entity_view
     weight: 2
     label: hidden
     settings:
-      link: true
       view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
     region: content
-hidden:
-  created: true
-  uid: true
+hidden: {  }

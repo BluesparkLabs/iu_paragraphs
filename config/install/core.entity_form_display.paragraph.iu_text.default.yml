@@ -5,7 +5,13 @@ dependencies:
     - field.field.paragraph.iu_text.iu_text
     - paragraphs.paragraphs_type.iu_text
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.iu_text.default
 targetEntityType: paragraph
 bundle: iu_text
@@ -18,6 +24,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
 hidden:
   created: true
   status: true

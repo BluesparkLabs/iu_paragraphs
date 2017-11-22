@@ -3,13 +3,12 @@ status: true
 dependencies:
   module:
     - paragraphs
-    - text
-id: paragraph.iu_slide_content
-field_name: iu_slide_content
+id: paragraph.iu_section_horizontal_rule
+field_name: iu_section_horizontal_rule
 entity_type: paragraph
-type: text_long
+type: boolean
 settings: {  }
-module: text
+module: core
 locked: false
 cardinality: 1
 translatable: true

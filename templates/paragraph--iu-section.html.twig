@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a paragraph.
+ * IU Framework Paragraphs template for displaying IU Framework Sections.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -39,19 +39,29 @@
  */
 #}
 
-{{ attach_library('paragraphs_iu/iu-row') }}
-
 {%
   set classes = [
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    'section',
+    hr ? 'horizontal-rule',
+    height != 'standard' ? height,
+    bgcolor
   ]
 %}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
+  {{ title_suffix }}
     {% block content %}
-      {{ content }}
+      {% if width == 'narrow' %}
+      <div class="row">
+        <div class="layout">
+        {{ content }}
+        </div>
+      </div>
+      {% else %}
+      <div class="row pad">
+        {{ content }}
+      </div>
+      {% endif %}
     {% endblock %}
   </div>
 {% endblock paragraph %}

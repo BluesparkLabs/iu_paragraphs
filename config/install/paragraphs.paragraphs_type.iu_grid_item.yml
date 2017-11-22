@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: iu_image
-label: Image
+id: iu_grid_item
+label: Column
 icon_uuid: null
-description: null
+description: ''
 behavior_plugins: {  }

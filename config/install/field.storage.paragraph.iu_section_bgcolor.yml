@@ -2,14 +2,15 @@ langcode: en
 status: true
 dependencies:
   module:
+    - color_field
     - paragraphs
-    - text
-id: paragraph.iu_slide_content
-field_name: iu_slide_content
+id: paragraph.iu_section_bgcolor
+field_name: iu_section_bgcolor
 entity_type: paragraph
-type: text_long
-settings: {  }
-module: text
+type: color_field_type
+settings:
+  format: '#hexhex'
+module: color_field
 locked: false
 cardinality: 1
 translatable: true

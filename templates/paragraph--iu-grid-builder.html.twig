@@ -39,19 +39,28 @@
  */
 #}
 
-{{ attach_library('paragraphs_iu/iu-column') }}
+{{ attach_library('paragraphs_iu/iu-grid-builder') }}
 
+{% set count = content._field_layout.content.iu_grid_builder_columns['#items']|length %}
 {%
   set classes = [
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    count > 1 ? 'grid',
+    count == 2 ? 'halves',
+    count == 3 ? 'thirds',
+    count > 3 ? 'builder'
   ]
 %}
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-      {{ content }}
+
+      {#
+        Avoid extra field wrapper divs ensuring the columns are rendered
+        directly to maintain the DOM structure required by the IU Framework.
+      #}
+      {% for key, item in content._field_layout.content.iu_grid_builder_columns if key|first != '#' %}
+        {{ item }}
+      {% endfor %}
     {% endblock %}
   </div>
 {% endblock paragraph %}

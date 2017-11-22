@@ -12,14 +12,10 @@ iu-carousel:
   dependencies:
     - core/jquery
     - core/jquery.once
-iu-column:
+iu-grid-builder:
   css:
     component:
-      css/paragraphs-iu-column.css: { }
-iu-row:
-  css:
-    component:
-      css/paragraphs-iu-row.css: { }
+      css/paragraphs-iu-grid-builder.css: { }
 iu-tabs:
   js:
     js/paragraphs-iu-tabs.behaviors.js: {}

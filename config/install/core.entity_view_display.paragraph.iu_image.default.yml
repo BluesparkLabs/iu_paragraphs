@@ -6,9 +6,14 @@ dependencies:
     - field.field.paragraph.iu_image.iu_link
     - paragraphs.paragraphs_type.iu_image
   module:
+    - field_layout
     - image
+    - layout_discovery
     - link
-    - options
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.iu_image.default
 targetEntityType: paragraph
 bundle: iu_image
@@ -22,6 +27,7 @@ content:
       image_link: ''
     third_party_settings: {  }
     type: image
+    region: content
   iu_link:
     weight: 3
     label: hidden
@@ -33,6 +39,7 @@ content:
       target: '0'
     third_party_settings: {  }
     type: link_separate
+    region: content
 hidden:
   created: true
   uid: true

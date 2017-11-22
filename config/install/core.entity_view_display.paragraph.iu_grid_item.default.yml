@@ -1,20 +1,23 @@
-uuid: 5f57453d-4d77-44da-9c8c-7211bfeb92e9
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.iu_row.field_iu_row_content
-    - paragraphs.paragraphs_type.iu_row
+    - field.field.paragraph.iu_grid_item.iu_grid_item_content
+    - paragraphs.paragraphs_type.iu_grid_item
   module:
     - entity_reference_revisions
-_core:
-  default_config_hash: AnUjSKinq7qH0ScXI8GwZCoRSl1bYBG1BFxmWZTpqGg
-id: paragraph.iu_row.default
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.iu_grid_item.default
 targetEntityType: paragraph
-bundle: iu_row
+bundle: iu_grid_item
 mode: default
 content:
-  field_iu_row_content:
+  iu_grid_item_content:
     type: entity_reference_revisions_entity_view
     weight: 0
     label: hidden

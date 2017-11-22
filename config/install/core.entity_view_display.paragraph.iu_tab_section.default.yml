@@ -6,27 +6,33 @@ dependencies:
     - field.field.paragraph.iu_tab_section.iu_tab_section_title
     - paragraphs.paragraphs_type.iu_tab_section
   module:
-    - entity_reference_revisions
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.iu_tab_section.default
 targetEntityType: paragraph
 bundle: iu_tab_section
 mode: default
 content:
   iu_tab_section_body:
-    type: entity_reference_revisions_entity_view
     weight: 1
-    label: above
-    settings:
-      view_mode: default
-      link: ''
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
+    type: text_default
+    region: content
   iu_tab_section_title:
     weight: 0
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
+    region: content
 hidden:
   created: true
   uid: true

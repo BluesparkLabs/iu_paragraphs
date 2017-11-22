@@ -3,16 +3,9 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.iu_slide_content
-    - paragraphs.paragraphs_type.iu_accordion
-    - paragraphs.paragraphs_type.iu_block
     - paragraphs.paragraphs_type.iu_carousel
-    - paragraphs.paragraphs_type.iu_column
-    - paragraphs.paragraphs_type.iu_image
-    - paragraphs.paragraphs_type.iu_text
-    - paragraphs.paragraphs_type.iu_tabs
-    - paragraphs.paragraphs_type.iu_view
   module:
-    - entity_reference_revisions
+    - text
 id: paragraph.iu_carousel.iu_slide_content
 field_name: iu_slide_content
 entity_type: paragraph
@@ -23,46 +16,5 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  handler: 'default:paragraph'
-  handler_settings:
-    target_bundles:
-      iu_text: iu_text
-      iu_image: iu_image
-      iu_accordion: iu_accordion
-      iu_column: iu_column
-      iu_block: iu_block
-      iu_tabs: iu_tabs
-      iu_view: iu_view
-    target_bundles_drag_drop:
-      iu_text:
-        enabled: true
-        weight: -31
-      iu_image:
-        enabled: true
-        weight: -30
-      iu_accordion:
-        enabled: true
-        weight: -28
-      iu_column:
-        enabled: true
-        weight: -26
-      iu_block:
-        enabled: true
-        weight: -23
-      iu_tabs:
-        enabled: true
-        weight: -21
-      iu_view:
-        enabled: true
-        weight: -20
-      iu_accordion_section:
-        weight: -19
-        enabled: false
-      iu_carousel:
-        weight: -18
-        enabled: false
-      iu_tab_section:
-        weight: -17
-        enabled: false
-field_type: entity_reference_revisions
+settings: {  }
+field_type: text_long

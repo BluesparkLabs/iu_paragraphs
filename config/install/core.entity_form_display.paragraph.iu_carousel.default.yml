@@ -6,27 +6,32 @@ dependencies:
     - field.field.paragraph.iu_carousel.iu_slide_interval
     - paragraphs.paragraphs_type.iu_carousel
   module:
-    - paragraphs
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.iu_carousel.default
 targetEntityType: paragraph
 bundle: iu_carousel
 mode: default
 content:
   iu_slide_content:
-    type: entity_reference_paragraphs
     weight: 3
     settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      add_mode: dropdown
-      form_display_mode: default
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
+    type: text_textarea
+    region: content
   iu_slide_interval:
     weight: 2
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
 hidden:
   created: true
   status: true

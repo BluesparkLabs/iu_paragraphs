@@ -1,0 +1,66 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.iu_section.iu_section_bgcolor
+    - field.field.paragraph.iu_section.iu_section_content
+    - field.field.paragraph.iu_section.iu_section_height
+    - field.field.paragraph.iu_section.iu_section_horizontal_rule
+    - field.field.paragraph.iu_section.iu_section_width
+    - paragraphs.paragraphs_type.iu_section
+  module:
+    - color_field
+    - field_layout
+    - layout_discovery
+    - paragraphs
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.iu_section.default
+targetEntityType: paragraph
+bundle: iu_section
+mode: default
+content:
+  iu_section_bgcolor:
+    weight: 0
+    settings:
+      default_colors: '#990000,#4a3c31,#edebeb,#f1be48,#dc8823,#008264,#285c4d,#006298,#01426a,#66435a,#512a44,#aca39a,#83786f,#191919,#00000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  iu_section_content:
+    type: entity_reference_paragraphs
+    weight: 6
+    settings:
+      title: Row
+      title_plural: Rows
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  iu_section_height:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  iu_section_horizontal_rule:
+    weight: 4
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  iu_section_width:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

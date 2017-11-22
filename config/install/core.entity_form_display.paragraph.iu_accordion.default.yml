@@ -5,7 +5,13 @@ dependencies:
     - field.field.paragraph.iu_accordion.iu_accordion_section
     - paragraphs.paragraphs_type.iu_accordion
   module:
+    - field_layout
+    - layout_discovery
     - paragraphs
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.iu_accordion.default
 targetEntityType: paragraph
 bundle: iu_accordion
@@ -21,6 +27,7 @@ content:
       add_mode: dropdown
       form_display_mode: default
     third_party_settings: {  }
+    region: content
 hidden:
   created: true
   status: true
