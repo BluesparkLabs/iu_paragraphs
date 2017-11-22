@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains paragraphs_iu.module.
+ * Contains iu_paragraphs.module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -11,7 +11,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * Implements hook_theme().
  */
-function paragraphs_iu_theme($existing, $type, $theme, $path) {
+function iu_paragraphs_theme($existing, $type, $theme, $path) {
   return [
     'paragraph__iu_accordion' => [
       'base hook' => 'paragraph',
@@ -40,7 +40,7 @@ function paragraphs_iu_theme($existing, $type, $theme, $path) {
 /**
  * Prepares variables for `paragraph--iu-section.html.twig`.
  */
-function paragraphs_iu_preprocess_paragraph__iu_section(&$variables) {
+function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   $p = $variables['paragraph'];
 
   // Map hex bgcolor to classnames from IU framework.
@@ -82,7 +82,7 @@ function paragraphs_iu_preprocess_paragraph__iu_section(&$variables) {
 /**
  * Implements hook_field_widget_form_alter().
  */
-function paragraphs_iu_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+function iu_paragraphs_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
 
   // Improve dropdown default option of '- None -'.
   $field_definition = $context['items']->getFieldDefinition();

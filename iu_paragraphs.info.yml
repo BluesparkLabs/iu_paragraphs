@@ -1,6 +1,6 @@
-name: 'Paragraphs IU'
+name: 'IU Paragraphs'
 type: module
-description: 'Paragraphs IU'
+description: 'Custom Paragraph types for section, grids, and chunks defined in the IU Web Style Guide Pattern Library.'
 core: 8.x
 package: Paragraphs
 dependencies:

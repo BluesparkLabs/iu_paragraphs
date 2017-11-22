@@ -1,6 +1,6 @@
 iu-accordion:
   js:
-    js/paragraphs-iu-accordion.behaviors.js: {}
+    js/iu-paragraphs-accordion.behaviors.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once
@@ -8,17 +8,17 @@ iu-accordion:
 iu-carousel:
   css:
     component:
-      css/paragraphs-iu-carousel.min.css: { }
+      css/iu-paragraphs-carousel.min.css: { }
   dependencies:
     - core/jquery
     - core/jquery.once
 iu-grid-builder:
   css:
     component:
-      css/paragraphs-iu-grid-builder.css: { }
+      css/iu-paragraphs-grid-builder.css: { }
 iu-tabs:
   js:
-    js/paragraphs-iu-tabs.behaviors.js: {}
+    js/iu-paragraphs-tabs.behaviors.js: {}
   dependencies:
     - core/jquery
     - core/jquery.once

@@ -1,8 +1,8 @@
 {
-  "name": "mishac/paragraphs_iu",
+  "name": "bluesparklabs/iu_paragraphs",
   "description": "Paragraph types for Indiana University Web Framework",
   "type": "drupal-module",
-  "homepage": "https://github.com/mishac/paragraphs_iu",
+  "homepage": "https://github.com/bluesparklabs/iu_paragraphs",
   "authors": [
     {
       "name": "James Wilson",

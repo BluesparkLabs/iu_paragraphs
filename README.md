@@ -20,7 +20,7 @@ conform to CSS class names and HTML structure dictated by the IU Framework.
 * Tabs + Tab section - display paragraphs as IU Framework Tabs
 
 ### Provided by submodules
-* paragraphs_iu_webform: a paragraph type that embeds a drupal webform
+* iu_paragraphs_webform: a paragraph type that embeds a drupal webform
 
 ### TBD:
 * Carousel - need to decide whether to keep this and choose a specific carousel plugin, or remove it.
