@@ -2,16 +2,17 @@ langcode: en
 status: true
 dependencies:
   module:
+    - entity_reference_revisions
     - paragraphs
-    - text
 id: paragraph.iu_slide_content
 field_name: iu_slide_content
 entity_type: paragraph
-type: text_long
-settings: {  }
-module: text
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

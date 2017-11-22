@@ -5,13 +5,6 @@ iu-accordion:
     - core/jquery
     - core/jquery.once
     - core/jquery.ui.accordion
-iu-carousel:
-  css:
-    component:
-      css/iu-paragraphs-carousel.min.css: { }
-  dependencies:
-    - core/jquery
-    - core/jquery.once
 iu-grid-builder:
   css:
     component:

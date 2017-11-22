@@ -3,13 +3,11 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.iu_carousel.iu_slide_content
-    - field.field.paragraph.iu_carousel.iu_slide_interval
     - paragraphs.paragraphs_type.iu_carousel
   module:
+    - entity_reference_revisions
     - field_layout
     - layout_discovery
-    - options
-    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -20,19 +18,14 @@ bundle: iu_carousel
 mode: default
 content:
   iu_slide_content:
-    weight: 3
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: text_default
+    type: entity_reference_revisions_entity_view
+    weight: 0
     region: content
-  iu_slide_interval:
-    weight: 2
     label: hidden
-    settings: {  }
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: list_key
-    region: content
 hidden:
   created: true
   uid: true
