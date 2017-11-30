@@ -53,13 +53,14 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   {# Loop through all of the accordion sections. #}
   {% for key, item in content._field_layout.content.iu_accordion_section if key|first != '#' %}
   <li class="accordion-item">
-    {% set section_id = 'panel-' ~ paragraph.id.value ~ '-' ~ key + 1 %}
+    {% set section_id = key + 1 %}
+    {% set panel_id = 'panel-' ~ paragraph.id.value ~ '-' ~ section_id %}
 
-    <a href="#{{ section_id }}" role="tab" class="accordion-title" id="{{ section_id }}-heading" aria-controls="{{ section_id }}">
+    <a href="#{{ panel_id }}" role="tab" class="accordion-title" id="{{ panel_id }}-heading" aria-controls="{{ panel_id }}">
       {# Print the accordion section title. #}
       {{ item['#paragraph'].iu_accordion_section_title.value }}
     </a>
-    <div id="{{ section_id }}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="{{ section_id }}-heading">
+    <div id="{{ panel_id }}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="{{ panel_id }}-heading">
       {# Loop through all of the accordion section bodies. #}
       {% for body_key, body_item in item['#paragraph'].iu_accordion_section_body %}
         {# Use the same render array as item and set the '#paragraph'. #}
