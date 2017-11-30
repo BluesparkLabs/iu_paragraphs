@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * iu Framework Paragraphs template for displaying an Accordion (Collapse).
+ * IU Framework Paragraphs template for displaying an Accordion.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -37,8 +37,6 @@
  */
 #}
 
-{{ attach_library('iu_paragraphs/iu-accordion') }}
-
 {# The template default set classes. #}
 {%
 set classes = [
@@ -48,18 +46,20 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 ]
 %}
 
-{# Sets Unique ID for Accordion from Paragraph ID. #}
-{% set paragraph_id = 'accordion-' ~ paragraph.id.value %}
+<div{{ attributes }}>
+{{ title_suffix }}
 
-{# Prints Accordion template. #}
-<div{{ attributes.addClass(classes).setAttribute('id', paragraph_id) }} role="tablist" aria-multiselectable="true">
+<ul class="accordion" data-accordion role="tablist" aria-multiselectable="true">
   {# Loop through all of the accordion sections. #}
-  {% for key, item in content.iu_accordion_section if key|first != '#' %}
-    <h3>
+  {% for key, item in content._field_layout.content.iu_accordion_section if key|first != '#' %}
+  <li class="accordion-item">
+    {% set section_id = 'panel-' ~ paragraph.id.value ~ '-' ~ key + 1 %}
+
+    <a href="#{{ section_id }}" role="tab" class="accordion-title" id="{{ section_id }}-heading" aria-controls="{{ section_id }}">
       {# Print the accordion section title. #}
       {{ item['#paragraph'].iu_accordion_section_title.value }}
-    </h3>
-    <div id="collapse-{{ paragraph_id }}-{{ key + 1 }}" class="card-block panel-collapse collapse" role="tappanel" aria-labelledby="heading-{{ paragraph_id }}-{{ key + 1 }}">
+    </a>
+    <div id="{{ section_id }}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="{{ section_id }}-heading">
       {# Loop through all of the accordion section bodies. #}
       {% for body_key, body_item in item['#paragraph'].iu_accordion_section_body %}
         {# Use the same render array as item and set the '#paragraph'. #}
@@ -72,5 +72,7 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
         {{ section_body }}
       {% endfor %}
     </div>
+  </li>
   {% endfor %}
+</ul>
 </div>
