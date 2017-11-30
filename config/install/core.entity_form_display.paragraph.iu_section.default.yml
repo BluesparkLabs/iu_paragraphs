@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.iu_section.iu_section_content
     - field.field.paragraph.iu_section.iu_section_height
     - field.field.paragraph.iu_section.iu_section_horizontal_rule
+    - field.field.paragraph.iu_section.iu_section_title
     - field.field.paragraph.iu_section.iu_section_width
     - paragraphs.paragraphs_type.iu_section
   module:
@@ -23,7 +24,7 @@ bundle: iu_section
 mode: default
 content:
   iu_section_bgcolor:
-    weight: 0
+    weight: 1
     settings:
       default_colors: '#990000,#4a3c31,#edebeb,#f1be48,#dc8823,#008264,#285c4d,#006298,#01426a,#66435a,#512a44,#aca39a,#83786f,#191919,#00000'
     third_party_settings: {  }
@@ -31,7 +32,7 @@ content:
     region: content
   iu_section_content:
     type: entity_reference_paragraphs
-    weight: 6
+    weight: 5
     settings:
       title: Row
       title_plural: Rows
@@ -48,14 +49,22 @@ content:
     type: options_select
     region: content
   iu_section_horizontal_rule:
-    weight: 4
+    weight: 2
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
+  iu_section_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   iu_section_width:
-    weight: 2
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: options_select

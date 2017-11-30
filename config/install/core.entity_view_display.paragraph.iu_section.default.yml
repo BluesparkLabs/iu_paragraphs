@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.iu_section.iu_section_content
     - field.field.paragraph.iu_section.iu_section_height
     - field.field.paragraph.iu_section.iu_section_horizontal_rule
+    - field.field.paragraph.iu_section.iu_section_title
     - field.field.paragraph.iu_section.iu_section_width
     - paragraphs.paragraphs_type.iu_section
   module:
@@ -23,12 +24,20 @@ mode: default
 content:
   iu_section_content:
     type: entity_reference_revisions_entity_view
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    region: content
+  iu_section_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
 hidden:
   iu_section_bgcolor: true
