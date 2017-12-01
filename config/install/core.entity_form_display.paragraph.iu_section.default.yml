@@ -2,16 +2,20 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.iu_section.iu_section_bgimage
+    - field.field.paragraph.iu_section.iu_section_bgparallax
     - field.field.paragraph.iu_section.iu_section_bgcolor
     - field.field.paragraph.iu_section.iu_section_content
     - field.field.paragraph.iu_section.iu_section_height
     - field.field.paragraph.iu_section.iu_section_horizontal_rule
     - field.field.paragraph.iu_section.iu_section_title
     - field.field.paragraph.iu_section.iu_section_width
+    - image.style.thumbnail
     - paragraphs.paragraphs_type.iu_section
   module:
     - color_field
     - field_layout
+    - image
     - layout_discovery
     - paragraphs
 third_party_settings:
@@ -23,6 +27,21 @@ targetEntityType: paragraph
 bundle: iu_section
 mode: default
 content:
+  iu_section_bgimage:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  iu_section_bgparallax:
+    weight: 3
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   iu_section_bgcolor:
     weight: 1
     settings:
@@ -32,7 +51,7 @@ content:
     region: content
   iu_section_content:
     type: entity_reference_paragraphs
-    weight: 5
+    weight: 7
     settings:
       title: Row
       title_plural: Rows
@@ -43,13 +62,13 @@ content:
     third_party_settings: {  }
     region: content
   iu_section_height:
-    weight: 3
+    weight: 5
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   iu_section_horizontal_rule:
-    weight: 2
+    weight: 4
     settings:
       display_label: true
     third_party_settings: {  }
@@ -64,7 +83,7 @@ content:
     type: string_textfield
     region: content
   iu_section_width:
-    weight: 4
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select

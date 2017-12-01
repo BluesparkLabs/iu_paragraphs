@@ -49,6 +49,10 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
 function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   $p = $variables['paragraph'];
 
+  // Setup background image variable.
+  $bgimage = $p->iu_section_bgimage->entity;
+  $variables['bgimage'] = !empty($bgimage) ? file_url_transform_relative(file_create_url($bgimage->getFileUri())) : FALSE;
+
   // Map hex bgcolor to classnames from IU framework.
   $bgcolor = $p->iu_section_bgcolor->getValue();
   $bgcolor_classes = [
@@ -71,6 +75,10 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   ];
   $hex = !empty($bgcolor[0]['color']) ? $bgcolor[0]['color'] : 'none';
   $variables['bgcolor'] = !empty($bgcolor_classes[$hex]) ? $bgcolor_classes[$hex] : 'bg-none';
+
+  // Setup parallax variable.
+  $parallax = $p->iu_section_bgparallax->getValue();
+  $variables['parallax'] = !empty($parallax[0]['value']);
 
   // Setup horizontal rule variable for template usage.
   $hr = $p->iu_section_horizontal_rule->getValue();

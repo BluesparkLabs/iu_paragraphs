@@ -42,6 +42,8 @@
 {%
   set classes = [
     'section',
+    bgimage ? 'bg-image',
+    parallax ? 'parallax',
     hr ? 'horizontal-rule',
     height != 'standard' ? height,
     bgcolor
@@ -51,6 +53,9 @@
   <div{{ attributes.addClass(classes) }}>
   {{ title_suffix }}
     {% block content %}
+      {% if bgimage %}
+        <div class="bg-image-cover" style="background-image: url('{{ bgimage }}');"></div>
+      {% endif %}
       {% if width == 'narrow' %}
       <div class="row">
         <div class="layout">
