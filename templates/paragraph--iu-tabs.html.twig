@@ -56,12 +56,12 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   {{ title_suffix }}
   <ul class="nav nav-tabs" role="tablist">
     {# Loops through the tab sections to print the tab section titles. #}
-    {% for key, item in content.iu_tab_section if key|first != '#' %}
+    {% for key, item in content._field_layout.content.iu_tab_section if key|first != '#' %}
       <li role="presentation" class="{% if loop.first %}active{% endif %}"><a href="#tab-{{ key }}" aria-controls="{{ item['#paragraph'].iu_tab_section_title.value }}" role="tab" data-toggle="tab">{{ item['#paragraph'].iu_tab_section_title.value }}</a></li>
     {% endfor %}
   </ul>
   {# Loops through the tab sections again to print the tab section bodies. #}
-  {% for key, item in content.iu_tab_section if key|first != '#' %}
+  {% for key, item in content._field_layout.content.iu_tab_section if key|first != '#' %}
     <div role="tappanel" class="tab-pane{% if loop.first %} active{% endif %}" id="tab-{{ key }}">
       {% for body_key, body_item in item['#paragraph'].iu_tab_section_body %}
         {# Use the same render array as item and set the '#paragraph'. #}
