@@ -22,6 +22,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'paragraph__iu_carousel' => [
       'base hook' => 'paragraph',
     ],
+    'paragraph__iu_cta' => [
+      'base hook' => 'paragraph',
+    ],
     'paragraph__iu_tabs' => [
       'base hook' => 'paragraph',
     ],

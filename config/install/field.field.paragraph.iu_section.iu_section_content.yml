@@ -6,6 +6,7 @@ dependencies:
     - paragraphs.paragraphs_type.iu_accordion
     - paragraphs.paragraphs_type.iu_block
     - paragraphs.paragraphs_type.iu_carousel
+    - paragraphs.paragraphs_type.iu_cta
     - paragraphs.paragraphs_type.iu_grid_builder
     - paragraphs.paragraphs_type.iu_image
     - paragraphs.paragraphs_type.iu_section
@@ -31,6 +32,7 @@ settings:
     target_bundles:
       iu_text: iu_text
       iu_image: iu_image
+      iu_cta: iu_cta
       iu_carousel: iu_carousel
       iu_accordion: iu_accordion
       iu_tabs: iu_tabs
@@ -44,31 +46,31 @@ settings:
       iu_image:
         enabled: true
         weight: -26
-      iu_carousel:
+      iu_cta:
         enabled: true
         weight: -25
-      iu_accordion:
+      iu_carousel:
         enabled: true
         weight: -24
-      iu_tabs:
+      iu_accordion:
         enabled: true
         weight: -23
-      iu_grid_builder:
+      iu_tabs:
         enabled: true
         weight: -22
-      iu_block:
+      iu_grid_builder:
         enabled: true
         weight: -21
-      iu_view:
+      iu_block:
         enabled: true
         weight: -20
-      iu_accordion_section:
+      iu_view:
+        enabled: true
         weight: -19
-        enabled: false
-      iu_grid_item:
+      iu_accordion_section:
         weight: -18
         enabled: false
-      iu_row:
+      iu_grid_item:
         weight: -17
         enabled: false
       iu_section:
