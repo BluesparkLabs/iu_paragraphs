@@ -91,6 +91,13 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   // Setup width variable for template usage.
   $width = $p->iu_section_width->getValue();
   $variables['width'] = !empty($width[0]['value']) ? $width[0]['value'] : 'standard';
+
+  // Setup additional formatting classes variable.
+  $styles = [];
+  foreach ($p->iu_section_styles->getValue() as $style) {
+    $styles[] = $style['value'];
+  }
+  $variables['styles'] = implode(' ', $styles);
 }
 
 /**

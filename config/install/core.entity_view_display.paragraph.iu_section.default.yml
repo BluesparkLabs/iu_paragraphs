@@ -2,12 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.iu_section.iu_section_bgcolor
     - field.field.paragraph.iu_section.iu_section_bgimage
     - field.field.paragraph.iu_section.iu_section_bgparallax
-    - field.field.paragraph.iu_section.iu_section_bgcolor
     - field.field.paragraph.iu_section.iu_section_content
     - field.field.paragraph.iu_section.iu_section_height
     - field.field.paragraph.iu_section.iu_section_horizontal_rule
+    - field.field.paragraph.iu_section.iu_section_styles
     - field.field.paragraph.iu_section.iu_section_title
     - field.field.paragraph.iu_section.iu_section_width
     - paragraphs.paragraphs_type.iu_section
@@ -42,9 +43,10 @@ content:
     type: string
     region: content
 hidden:
+  iu_section_bgcolor: true
   iu_section_bgimage: true
   iu_section_bgparallax: true
-  iu_section_bgcolor: true
   iu_section_height: true
   iu_section_horizontal_rule: true
+  iu_section_styles: true
   iu_section_width: true

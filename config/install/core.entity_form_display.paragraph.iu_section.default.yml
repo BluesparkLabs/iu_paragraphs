@@ -2,18 +2,20 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.iu_section.iu_section_bgcolor
     - field.field.paragraph.iu_section.iu_section_bgimage
     - field.field.paragraph.iu_section.iu_section_bgparallax
-    - field.field.paragraph.iu_section.iu_section_bgcolor
     - field.field.paragraph.iu_section.iu_section_content
     - field.field.paragraph.iu_section.iu_section_height
     - field.field.paragraph.iu_section.iu_section_horizontal_rule
+    - field.field.paragraph.iu_section.iu_section_styles
     - field.field.paragraph.iu_section.iu_section_title
     - field.field.paragraph.iu_section.iu_section_width
     - image.style.thumbnail
     - paragraphs.paragraphs_type.iu_section
   module:
     - color_field
+    - field_group
     - field_layout
     - image
     - layout_discovery
@@ -22,13 +24,54 @@ third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
+  field_group:
+    group_iu_section_options:
+      children:
+        - iu_section_width
+        - iu_section_height
+        - iu_section_horizontal_rule
+        - iu_section_styles
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        label: 'Display options'
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: 'Display options'
+      region: content
+    group_iu_section_background:
+      children:
+        - iu_section_bgcolor
+        - iu_section_bgimage
+        - iu_section_bgparallax
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        label: Background
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Background
+      region: content
 id: paragraph.iu_section.default
 targetEntityType: paragraph
 bundle: iu_section
 mode: default
 content:
-  iu_section_bgimage:
+  iu_section_bgcolor:
     weight: 2
+    settings:
+      default_colors: '#990000,#4a3c31,#edebeb,#f1be48,#dc8823,#008264,#285c4d,#006298,#01426a,#66435a,#512a44,#aca39a,#83786f,#191919,#00000'
+    third_party_settings: {  }
+    type: color_field_widget_box
+    region: content
+  iu_section_bgimage:
+    weight: 3
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
@@ -36,22 +79,15 @@ content:
     type: image_image
     region: content
   iu_section_bgparallax:
-    weight: 3
+    weight: 4
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
-  iu_section_bgcolor:
-    weight: 1
-    settings:
-      default_colors: '#990000,#4a3c31,#edebeb,#f1be48,#dc8823,#008264,#285c4d,#006298,#01426a,#66435a,#512a44,#aca39a,#83786f,#191919,#00000'
-    third_party_settings: {  }
-    type: color_field_widget_box
-    region: content
   iu_section_content:
     type: entity_reference_paragraphs
-    weight: 7
+    weight: 4
     settings:
       title: Row
       title_plural: Rows
@@ -62,17 +98,23 @@ content:
     third_party_settings: {  }
     region: content
   iu_section_height:
-    weight: 5
+    weight: 8
     settings: {  }
     third_party_settings: {  }
     type: options_select
     region: content
   iu_section_horizontal_rule:
-    weight: 4
+    weight: 9
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
+    region: content
+  iu_section_styles:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
     region: content
   iu_section_title:
     weight: 0
@@ -83,7 +125,7 @@ content:
     type: string_textfield
     region: content
   iu_section_width:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
