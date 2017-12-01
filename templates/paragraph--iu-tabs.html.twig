@@ -52,17 +52,20 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
 {% set paragraph_id = 'tab-' ~ paragraph.id.value %}
 
 {# Prints Tabs template. #}
-<div{{ attributes.addClass(classes).setAttribute('id', paragraph_id) }} role="tablist" aria-multiselectable="true">
+<div{{ attributes.addClass(classes) }} role="tablist" aria-multiselectable="true">
   {{ title_suffix }}
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="tabs" data-active-collapse="true" data-deep-link="true" data-deep-link-smudge="true" role="tablist" data-tabs id="{{ paragraph_id }}">
     {# Loops through the tab sections to print the tab section titles. #}
     {% for key, item in content._field_layout.content.iu_tab_section if key|first != '#' %}
-      <li role="presentation" class="{% if loop.first %}active{% endif %}"><a href="#tab-{{ key }}" aria-controls="{{ item['#paragraph'].iu_tab_section_title.value }}" role="tab" data-toggle="tab">{{ item['#paragraph'].iu_tab_section_title.value }}</a></li>
+      {% set id = item['#paragraph'].id.value %}
+      <li role="presentation" class="tabs-title{% if loop.first %} is-active{% endif %}"><a href="#panel{{ id }}" aria-controls="{{ item['#paragraph'].iu_tab_section_title.value }}" role="tab"{% if loop.first %}  aria-selected="true"{% endif %} data-tabs-target="panel{{ id }}" >{{ item['#paragraph'].iu_tab_section_title.value }}</a></li>
     {% endfor %}
   </ul>
+  <div class="tabs-content" data-tabs-content="{{ paragraph_id }}">
   {# Loops through the tab sections again to print the tab section bodies. #}
   {% for key, item in content._field_layout.content.iu_tab_section if key|first != '#' %}
-    <div role="tappanel" class="tab-pane{% if loop.first %} active{% endif %}" id="tab-{{ key }}">
+    {% set id = item['#paragraph'].id.value %}
+    <div role="tabpanel" class="tabs-panel{% if loop.first %} is-active{% endif %}" id="panel{{ id }}">
       {% for body_key, body_item in item['#paragraph'].iu_tab_section_body %}
         {# Use the same render array as item and set the '#paragraph'. #}
         {% set section_body = item %}
@@ -75,4 +78,5 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
       {% endfor %}
     </div>
   {% endfor %}
+  </div>
 </div>
