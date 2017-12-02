@@ -19,6 +19,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'paragraph__iu_accordion' => [
       'base hook' => 'paragraph',
     ],
+    'paragraph__iu_callout_pullquote' => [
+      'base hook' => 'paragraph',
+    ],
     'paragraph__iu_carousel' => [
       'base hook' => 'paragraph',
     ],
@@ -41,6 +44,23 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
       'base hook' => 'paragraph',
     ],
   ];
+}
+
+/**
+ * Prepares variables for `paragraph--iu-callout-pullquote.html.twig`.
+ */
+function iu_paragraphs_preprocess_paragraph__iu_callout_pullquote(&$variables) {
+  $p = $variables['paragraph'];
+
+  // The value of the is_pullquote boolean variable is based on whether the
+  // user specified any text in the "Attribution" field. If attribution is
+  // left empty, then this is not a pullquote.
+  $attribution = $p->iu_quote_attribution->getValue();
+  $variables['is_pullquote'] = !empty($attribution[0]['value']);
+
+  // Setup has_image boolean variable.
+  $image = $p->iu_callout_image->entity;
+  $variables['has_image'] = !empty($image);
 }
 
 /**
@@ -113,4 +133,15 @@ function iu_paragraphs_field_widget_form_alter(&$element, \Drupal\Core\Form\Form
   if ($field_definition->getName() == 'iu_section_height') {
     $element['#options']['_none'] = t('Standard height');
   }
+}
+
+/**
+ * Implements hook_field_widget_info_alter().
+ */
+function iu_paragraphs_field_widget_info_alter(array &$info) {
+
+  // Allow simple Drupal text fields to use the textarea widget,
+  // for multi-line content entry.
+  // (See https://www.drupal.org/project/textarea_widget_for_text)
+  $info['text_textarea']['field_types'][] = 'text';
 }
