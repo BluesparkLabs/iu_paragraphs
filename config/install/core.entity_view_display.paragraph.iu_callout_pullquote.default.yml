@@ -5,7 +5,7 @@ dependencies:
     - field.field.paragraph.iu_callout_pullquote.iu_callout_content
     - field.field.paragraph.iu_callout_pullquote.iu_callout_image
     - field.field.paragraph.iu_callout_pullquote.iu_quote_attribution
-    - image.style.medium
+    - image.style.iu_callout
     - paragraphs.paragraphs_type.iu_callout_pullquote
   module:
     - field_layout
@@ -32,7 +32,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: medium
+      image_style: iu_callout
       image_link: ''
     third_party_settings: {  }
     type: image

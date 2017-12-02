@@ -5,7 +5,7 @@ dependencies:
     - field.field.paragraph.iu_callout_pullquote.iu_callout_content
     - field.field.paragraph.iu_callout_pullquote.iu_callout_image
     - field.field.paragraph.iu_callout_pullquote.iu_quote_attribution
-    - image.style.thumbnail
+    - image.style.iu_callout
     - paragraphs.paragraphs_type.iu_callout_pullquote
   module:
     - field_layout
@@ -32,8 +32,8 @@ content:
   iu_callout_image:
     weight: 0
     settings:
+      preview_image_style: iu_callout
       progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
     region: content
