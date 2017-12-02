@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.iu_grid_builder
     - paragraphs.paragraphs_type.iu_image
     - paragraphs.paragraphs_type.iu_section
+    - paragraphs.paragraphs_type.iu_stats
     - paragraphs.paragraphs_type.iu_tabs
     - paragraphs.paragraphs_type.iu_text
     - paragraphs.paragraphs_type.iu_view
@@ -36,6 +37,7 @@ settings:
       iu_cta: iu_cta
       iu_callout_pullquote: iu_callout_pullquote
       iu_carousel: iu_carousel
+      iu_stats: iu_stats
       iu_accordion: iu_accordion
       iu_tabs: iu_tabs
       iu_grid_builder: iu_grid_builder
@@ -44,44 +46,50 @@ settings:
     target_bundles_drag_drop:
       iu_text:
         enabled: true
-        weight: -29
+        weight: -33
       iu_image:
         enabled: true
-        weight: -28
+        weight: -32
       iu_cta:
         enabled: true
-        weight: -27
+        weight: -31
       iu_callout_pullquote:
         enabled: true
-        weight: -26
+        weight: -30
       iu_carousel:
         enabled: true
-        weight: -25
+        weight: -29
+      iu_stats:
+        enabled: true
+        weight: -28
       iu_accordion:
         enabled: true
-        weight: -24
+        weight: -27
       iu_tabs:
         enabled: true
-        weight: -23
+        weight: -26
       iu_grid_builder:
         enabled: true
-        weight: -22
+        weight: -25
       iu_block:
         enabled: true
-        weight: -21
+        weight: -24
       iu_view:
         enabled: true
-        weight: -20
+        weight: -23
       iu_accordion_section:
-        weight: -19
+        weight: -22
         enabled: false
       iu_grid_item:
-        weight: -18
+        weight: -21
         enabled: false
       iu_section:
-        weight: -17
+        weight: -20
+        enabled: false
+      iu_stat:
+        weight: -19
         enabled: false
       iu_tab_section:
-        weight: -16
+        weight: -18
         enabled: false
 field_type: entity_reference_revisions

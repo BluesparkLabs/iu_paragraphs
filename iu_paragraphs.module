@@ -16,6 +16,15 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'field__iu_section_title' => [
       'base hook' => 'field',
     ],
+    'field__iu_stat_content' => [
+      'base hook' => 'field',
+    ],
+    'field__iu_stat_link' => [
+      'base hook' => 'field',
+    ],
+    'field__iu_stat_number' => [
+      'base hook' => 'field',
+    ],
     'paragraph__iu_accordion' => [
       'base hook' => 'paragraph',
     ],
@@ -43,7 +52,25 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'paragraph__iu_section' => [
       'base hook' => 'paragraph',
     ],
+    'paragraph__iu_stat' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_stats' => [
+      'base hook' => 'paragraph',
+    ],
   ];
+}
+
+/**
+ * Prepares variables for `field--iu-stat-link.html.twig`.
+ */
+function iu_paragraphs_preprocess_field__iu_stat_link(&$variables) {
+  // Add the 'button' class to Stat link.  In Drupal 8, we try to avoid adding
+  // classes in preprocess, however there is currently not a clean way to do
+  // this in the Twig template.
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['content']['#options']['attributes']['class'][] = 'button';
+  }
 }
 
 /**
