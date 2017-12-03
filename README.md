@@ -65,6 +65,10 @@ IU Framework:
 3) Add a field named _Sections_ of type _Paragraph_ (aka Entity Reference
     Revision); For _Reference Type_, include only the Section type;
 
+4) We recommend the _Paragraphs Experimental_ field widget for Form Display.
+
+5) Ensure your theme is configured to display the node content in a theme
+    Region that spans the width of the screen (aka, edge-to-edge).
 
 # Credits
 
