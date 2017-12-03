@@ -13,19 +13,25 @@ This module should be used in combination with the [IU Drupal Theme][3].
 
 Paragraph types currently available with this module include:
 
-* Section - the top-level Paragraph type that you should add to your content
-  types; it supports background colors and custom height/width and separators
-  logic.
+* Section - the top-level Paragraph type that you should add as a field on
+    your content types; it supports background colors & images, parallax, as
+    well as other display settings like height/width/padding, text alignment,
+    and visibility rules, all from the standard IU Framework CSS.
 * Text
 * Image
 * Carousel
+* Call To Action
+* Callouts & Pullquotes
 * Accordion
-* Tabs
+* Stats
+* Tabs - Not mentioned in the IU Pattern Library, but code was found in the IU
+    Framework CSS for these. The implementation is based on Zurb Foundation
+    Tabs and styling is completed via the [IU Drupal theme][3].
 * Grid Buider - Build rows of equal-width <em>grid item</em> columns.
 * Drupal Block - Embed a Drupal block inside a Paragraph.
 * Drupal View - Embed a Drupal view in a Paragraph via viewsreference module.
 * Form - Embeds a Drupal webform via the included iu_paragraphs_webform
-  submodule.
+    submodule.
 
 
 # Roadmap
@@ -33,14 +39,32 @@ Paragraph types currently available with this module include:
 The following widgets still need to be implemented to completely support the
 IU Framework:
 
-* Background images in Sections
-* Call To Action
-* Callouts & Pullquotes
+* Banners
 * Feature
 * Panels
+* Image Essays
 * Social Media Items
-* Stat
 * Video & Audio
+
+
+# Contrib Dependencies
+
+* Color Field
+* Field Group
+* [IU theme][3]
+* Paragraphs - w/ patch from Issue #2868155
+* ViewsReference
+
+
+# Installation
+
+1) Download and enable the module and its contrib dependencies (see above).
+
+2) Open _Admin > Structure > Content types > Basic Page > Manage fields_.
+
+3) Add a field named _Sections_ of type _Paragraph_ (aka Entity Reference
+    Revision); For _Reference Type_, include only the Section type;
+
 
 # Credits
 
