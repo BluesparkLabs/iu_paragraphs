@@ -86,13 +86,15 @@ content:
     type: boolean_checkbox
     region: content
   iu_section_content:
-    type: entity_reference_paragraphs
+    type: paragraphs
     weight: 4
     settings:
-      title: Row
-      title_plural: Rows
-      edit_mode: open
-      add_mode: dropdown
+      title: chunk
+      title_plural: chunks
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      add_mode: modal
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings: {  }

@@ -23,12 +23,12 @@ content:
     settings:
       title: Column
       title_plural: Columns
-      edit_mode: open
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: iu_grid_item
-      closed_mode: summary
-      autocollapse: none
     third_party_settings: {  }
     region: content
 hidden:
