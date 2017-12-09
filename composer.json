@@ -17,5 +17,18 @@
   },
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
-  "require": {}
+  "require": {
+    "cweagans/composer-patches": "~1.0",
+    "drupal/color_field": "^2.0"
+  },
+  "require-dev": {
+    "drupal/styleguide": "^1.0"
+  },
+  "extra": {
+    "patches": {
+      "drupal/color_field": {
+        "Issue #2854199: use color boxes defaults": "https://www.drupal.org/files/issues/color_field-2854199-7.patch"
+      }
+    }
+  }
 }

@@ -49,7 +49,7 @@ IU Framework:
 
 # Contrib Dependencies
 
-* Color Field
+* Color Field 2.x - w/ patch from Issue #2854199
 * Field Group
 * [IU theme][3]
 * Paragraphs - w/ patch from Issue #2868155
