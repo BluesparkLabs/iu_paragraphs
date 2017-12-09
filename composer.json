@@ -19,7 +19,10 @@
   "minimum-stability": "dev",
   "require": {
     "cweagans/composer-patches": "~1.0",
-    "drupal/color_field": "^2.0"
+    "drupal/color_field": "^2.0",
+    "drupal/field_group": "^3.0",
+    "drupal/iu": "1.x-dev",
+    "drupal/paragraphs": "1.x-dev"
   },
   "require-dev": {
     "drupal/styleguide": "^1.0"
@@ -28,6 +31,9 @@
     "patches": {
       "drupal/color_field": {
         "Issue #2854199: use color boxes defaults": "https://www.drupal.org/files/issues/color_field-2854199-7.patch"
+      },
+      "drupal/paragraphs": {
+          "Issue #2868155: new hooks for editing paragraphs subforms": "https://www.drupal.org/files/issues/2868155-16.patch"
       }
     }
   }
