@@ -29,6 +29,9 @@
   },
   "extra": {
     "patches": {
+      "drupal/core": {
+        "Issue #2890758: Block visibility rules in node preview": "https://www.drupal.org/files/issues/block_visibility_node_type_not_working_in_preview_mode-2890758-1.patch"
+      },
       "drupal/color_field": {
         "Issue #2854199: use color boxes defaults": "https://www.drupal.org/files/issues/color_field-2854199-7.patch"
       },
