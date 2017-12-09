@@ -1,16 +1,20 @@
 {
-  "name": "bluesparklabs/iu_paragraphs",
+  "name": "drupal/iu_paragraphs",
   "description": "Paragraph types for Indiana University Web Framework",
   "type": "drupal-module",
-  "homepage": "https://github.com/bluesparklabs/iu_paragraphs",
+  "homepage": "https://www.drupal.org/project/iu_paragraphs",
   "authors": [
     {
       "name": "James Wilson",
-      "email": "jrwilson3@gmail.com",
-      "homepage": "https://bluespark.com",
+      "homepage": "https://www.drupal.org/u/jwilson3",
       "role": "Maintainer"
     }
   ],
+  "support": {
+    "issues": "https://drupal.org/project/issues/iu_paragraphs",
+    "irc": "irc://irc.freenode.org/drupal-contribute",
+    "source": "https://cgit.drupalcode.org/iu_paragraphs"
+  },
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "require": {}
