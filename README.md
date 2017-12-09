@@ -67,8 +67,23 @@ IU Framework:
 
 4) We recommend the _Paragraphs Experimental_ field widget for Form Display.
 
-5) Ensure your theme is configured to display the node content in a theme
-    Region that spans the width of the screen (aka, edge-to-edge).
+5) Ensure your _Sections_ field and node type display is configured in an
+    _Edge-to-edge_ layout. See _Layout settings_ on the _Manage display_ tab
+    of your content type. (Field Layout and Layout Discovery modules must be
+    enabled).  We recommend leveraging the _IU Page Layout_ from the IU theme
+    for your field layouts.  This custom layout provides two regions:
+    Constrained and Edge-to-edge.  Place the Body field in the Constrained
+    region and the Sections field in the Edge-to-edge region.  An alternative
+    approach would be to use the Page Manager module to handle field layouts,
+    but Page Manager is outside the scope of this instruction manual.
+
+6) Ensure your theme is configured to display the _Main page content_ in a
+    region that spans the width of the screen (aka, edge-to-edge). We recommend
+    using the _IU Page Layout_ from the _IU theme_ which comes preloaded upon
+    installation with two Main page content blocks;  one for node pages and
+    one for non-node pages. The Main page content block for nodes is placed in
+    the IU theme's Edge-to-edge region, while non-node Main page content block
+    is in the standard Content region which has a constrained maximum width.
 
 # Credits
 
