@@ -100,28 +100,21 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   $bgimage = $p->iu_section_bgimage->entity;
   $variables['bgimage'] = !empty($bgimage) ? file_url_transform_relative(file_create_url($bgimage->getFileUri())) : FALSE;
 
-  // Map hex bgcolor to classnames from IU framework.
-  $bgcolor = $p->iu_section_bgcolor->getValue();
-  $bgcolor_classes = [
-    '#990000' => 'bg-crimson bg-dark',
-    '#4a3c31' => 'bg-mahogany bg-dark',
-    '#edebeb' => 'bg-gray',
-    '#f1be48' => 'bg-gold',
-    '#dc8823' => 'bg-gold-dark',
-    '#008264' => 'bg-mint bg-dark',
-    '#285c4d' => 'bg-mint-dark bg-dark',
-    '#006298' => 'bg-midnight bg-dark',
-    '#01426a' => 'bg-midnight-dark bg-dark',
-    '#66435a' => 'bg-majestic bg-dark',
-    '#512a44' => 'bg-majestic-dark bg-dark',
-    '#aca39a' => 'bg-limestone',
-    '#83786f' => 'bg-limestone-dark',
-    '#191919' => 'bg-black bg-dark',
-    '#000000' => 'bg-full-black bg-dark',
-    'none' => 'bg-none',
-  ];
-  $hex = !empty($bgcolor[0]['color']) ? $bgcolor[0]['color'] : 'none';
-  $variables['bgcolor'] = !empty($bgcolor_classes[$hex]) ? $bgcolor_classes[$hex] : 'bg-none';
+  // Setup background color class name variable.
+  $bgcolor = $p->iu_section_background_color->getValue();
+  $variables['bgcolor'] = !empty($bgcolor[0]['value']) ? $bgcolor[0]['value'] : 'bg-none';
+
+  // Add bg-dark class to some instances of bg-secondary.
+  if ($variables['bgcolor'] == 'bg-secondary') {
+    $secondary_color = theme_get_setting('secondary_color', 'iu');
+    if (empty($secondary_color)) {
+      $secondary_color = 'none';
+    }
+    $colors = _iu_secondary_color_palette_options();
+    if (!empty($colors[$secondary_color]) && $colors[$secondary_color]['is_dark'] == TRUE ) {
+      $variables['bgcolor'] .= ' bg-dark';
+    }
+  }
 
   // Setup parallax variable.
   $parallax = $p->iu_section_bgparallax->getValue();
@@ -171,4 +164,64 @@ function iu_paragraphs_field_widget_info_alter(array &$info) {
   // for multi-line content entry.
   // (See https://www.drupal.org/project/textarea_widget_for_text)
   $info['text_textarea']['field_types'][] = 'text';
+}
+
+/**
+ * Implements hook_form_paragraphs_subform_TYPE_alter() for the Section
+ * paragraph type.
+ */
+function iu_paragraphs_form_paragraphs_subform_iu_section_alter(array &$subform, \Drupal\Core\Form\FormStateInterface $form_state, $delta) {
+  $paragraph = $form_state->get('paragraph');
+
+  $secondary_color = theme_get_setting('secondary_color', 'iu');
+  if (empty($secondary_color)) {
+    $secondary_color = 'none';
+  }
+
+  // Handle missing theme.
+  if (!drupal_get_path('theme', 'iu')) {
+    return;
+  }
+
+  // Load IU color palette and display section background color options as
+  // color blocks. (Please excuse the tight coupling with the IU theme, it
+  // couldn't be helped to satisfy the IU Styleguide options).
+  require_once drupal_get_path('theme', 'iu') . '/iu.theme';
+  $colors = _iu_secondary_color_palette_options();
+
+  $widget = &$subform['iu_section_background_color']['widget'];
+  $widget['#attributes']['class'][] = 'color-block-radios';
+  foreach ($widget['#options'] as $key => $markup) {
+    $class = $key;
+    $name = $markup->__toString();
+    if (!empty($colors[$key])) {
+      $class = $colors[$key]['class'];
+      $name = $colors[$key]['name'];
+      $details = t('Primary color');
+    }
+    elseif ($class == 'secondary') {
+      $class = $colors[$secondary_color]['class'];
+      $name = $colors[$secondary_color]['name'];
+      $details = $markup->__toString();
+    }
+    elseif ($class == '_none') {
+      $class = 'bg-white-default';
+      $name = t('None');
+      $details = t('Default (white)');
+    }
+
+    $color_block = '
+<div class="color-block '. $class . '">
+  <div class="color-name">' . $name . '</div>
+  <div class="color-details">' . $details . '</div>
+</div>
+';
+    $widget['#options'][$key] = $color_block;
+  }
+
+  if ($widget['#default_value'] == NULL) {
+    $widget['#default_value'] = '_none';
+  }
+
+  $subform['#attached']['library'][] = 'iu/color-block';
 }

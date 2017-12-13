@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.iu_section.iu_section_bgcolor
+    - field.field.paragraph.iu_section.iu_section_background_color
     - field.field.paragraph.iu_section.iu_section_bgimage
     - field.field.paragraph.iu_section.iu_section_bgparallax
     - field.field.paragraph.iu_section.iu_section_content
@@ -14,7 +14,6 @@ dependencies:
     - image.style.thumbnail
     - paragraphs.paragraphs_type.iu_section
   module:
-    - color_field
     - field_group
     - field_layout
     - image
@@ -44,7 +43,7 @@ third_party_settings:
       region: content
     group_iu_section_background:
       children:
-        - iu_section_bgcolor
+        - iu_section_background_color
         - iu_section_bgimage
         - iu_section_bgparallax
       parent_name: ''
@@ -63,12 +62,11 @@ targetEntityType: paragraph
 bundle: iu_section
 mode: default
 content:
-  iu_section_bgcolor:
+  iu_section_background_color:
     weight: 2
-    settings:
-      default_colors: '#990000,#4a3c31,#edebeb,#f1be48,#dc8823,#008264,#285c4d,#006298,#01426a,#66435a,#512a44,#aca39a,#83786f,#191919,#00000'
+    settings: {  }
     third_party_settings: {  }
-    type: color_field_widget_box
+    type: options_buttons
     region: content
   iu_section_bgimage:
     weight: 3

@@ -5,7 +5,6 @@ core: 8.x
 package: Paragraphs
 dependencies:
   - block
-  - color_field (>=8.x-2.x)
   - entity_reference_revisions
   - field
   - field_group
