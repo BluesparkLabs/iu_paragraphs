@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.iu_cta
     - paragraphs.paragraphs_type.iu_grid_item
     - paragraphs.paragraphs_type.iu_image
+    - paragraphs.paragraphs_type.iu_panel
     - paragraphs.paragraphs_type.iu_stat
     - paragraphs.paragraphs_type.iu_tabs
     - paragraphs.paragraphs_type.iu_text
@@ -36,6 +37,7 @@ settings:
       iu_cta: iu_cta
       iu_callout_pullquote: iu_callout_pullquote
       iu_carousel: iu_carousel
+      iu_panel: iu_panel
       iu_stat: iu_stat
       iu_accordion: iu_accordion
       iu_tabs: iu_tabs
@@ -44,47 +46,53 @@ settings:
     target_bundles_drag_drop:
       iu_text:
         enabled: true
-        weight: -31
+        weight: -35
       iu_image:
         enabled: true
-        weight: -30
+        weight: -34
       iu_cta:
         enabled: true
-        weight: -29
+        weight: -33
       iu_callout_pullquote:
         enabled: true
-        weight: -28
+        weight: -32
       iu_carousel:
         enabled: true
-        weight: -27
+        weight: -31
+      iu_panel:
+        enabled: true
+        weight: -30
       iu_stat:
         enabled: true
-        weight: -26
+        weight: -29
       iu_accordion:
         enabled: true
-        weight: -25
+        weight: -28
       iu_tabs:
         enabled: true
-        weight: -24
+        weight: -27
       iu_block:
         enabled: true
-        weight: -23
+        weight: -26
       iu_view:
         enabled: true
-        weight: -22
+        weight: -25
       iu_accordion_section:
-        weight: -21
+        weight: -24
         enabled: false
       iu_grid_item:
-        weight: -20
+        weight: -23
         enabled: false
       iu_section:
-        weight: -19
+        weight: -22
         enabled: false
       iu_tab_section:
-        weight: -18
+        weight: -21
         enabled: false
       iu_grid_builder:
-        weight: -17
+        weight: -20
+        enabled: false
+      iu_stats:
+        weight: -19
         enabled: false
 field_type: entity_reference_revisions
