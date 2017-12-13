@@ -13,6 +13,12 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 function iu_paragraphs_theme($existing, $type, $theme, $path) {
   return [
+    'field__iu_feature_link' => [
+      'base hook' => 'field',
+    ],
+    'field__iu_feature_subhead' => [
+      'base hook' => 'field',
+    ],
     'field__iu_panel_content' => [
       'base hook' => 'field',
     ],
@@ -46,6 +52,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'paragraph__iu_tabs' => [
       'base hook' => 'paragraph',
     ],
+    'paragraph__iu_feature' => [
+      'base hook' => 'paragraph',
+    ],
     'paragraph__iu_grid_builder' => [
       'base hook' => 'paragraph',
     ],
@@ -71,6 +80,18 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
       'base hook' => 'paragraph',
     ],
   ];
+}
+
+/**
+ * Prepares variables for `field--iu-feature-link.html.twig`.
+ */
+function iu_paragraphs_preprocess_field__iu_feature_link(&$variables) {
+  // Add the 'button' class to Feature link.  In Drupal 8, we try to avoid
+  // adding classes in preprocess, however there is currently not a clean way
+  // to do this in the Twig template.
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['content']['#options']['attributes']['class'][] = 'button';
+  }
 }
 
 /**
@@ -101,6 +122,19 @@ function iu_paragraphs_preprocess_paragraph__iu_callout_pullquote(&$variables) {
   $image = $p->iu_callout_image->entity;
   $variables['has_image'] = !empty($image);
 }
+
+
+/**
+ * Prepares variables for `paragraph--iu-feature.html.twig`.
+ */
+function iu_paragraphs_preprocess_paragraph__iu_feature(&$variables) {
+  $p = $variables['paragraph'];
+
+  // Setup has_image boolean variable.
+  $image = $p->iu_feature_image->entity;
+  $variables['has_image'] = !empty($image);
+}
+
 
 /**
  * Prepares variables for `paragraph--iu-panel.html.twig`.
