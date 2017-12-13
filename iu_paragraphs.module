@@ -106,12 +106,11 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   $variables['bgcolor'] = 'bg-' . $colorname;
 
   if (drupal_get_path('theme', 'iu')) {
-    $colors = _iu_secondary_color_palette_options();
-
     // Load IU color palette and display section background color options as
     // color blocks. (Please excuse the tight coupling with the IU theme, it
     // couldn't be helped to satisfy the IU Styleguide options).
     require_once drupal_get_path('theme', 'iu') . '/iu.theme';
+    $colors = _iu_secondary_color_palette_options();
 
     // Determine the real colorname of the secondary color based on the IU
     // Theme settings to help us determine whether to add the bg-dark class
