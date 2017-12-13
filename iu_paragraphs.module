@@ -13,6 +13,9 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 function iu_paragraphs_theme($existing, $type, $theme, $path) {
   return [
+    'field__iu_panel_content' => [
+      'base hook' => 'field',
+    ],
     'field__iu_panel_header' => [
       'base hook' => 'field',
     ],
@@ -53,6 +56,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
       'base hook' => 'paragraph',
     ],
     'paragraph__iu_panel' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_panel_interactive' => [
       'base hook' => 'paragraph',
     ],
     'paragraph__iu_section' => [
@@ -105,6 +111,21 @@ function iu_paragraphs_preprocess_paragraph__iu_panel(&$variables) {
   $header_level = $p->iu_panel_header_level->getValue();
   $header_level = !empty($header_level[0]['value']) ? $header_level[0]['value'] : 'h3'; // Default to H3 if not defined.
   $variables['header_level'] = $header_level;
+}
+
+/**
+ * Prepares variables for `paragraph--iu-panel-interactive.html.twig`.
+ */
+function iu_paragraphs_preprocess_paragraph__iu_panel_interactive(&$variables) {
+  $p = $variables['paragraph'];
+
+  // Prep the header_level logic from iu_panel preprocess.
+  iu_paragraphs_preprocess_paragraph__iu_panel($variables);
+
+  // Prep the interactive link_uri variable.
+  $link_uri = $p->iu_panel_interactive_link->getValue();
+  $link_uri = !empty($link_uri[0]['uri']) ? $link_uri[0]['uri'] : '';
+  $variables['link_url'] = \Drupal\Core\Url::fromUri($link_uri)->toString();
 }
 
 /**
