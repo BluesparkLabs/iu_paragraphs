@@ -79,11 +79,13 @@ IU Framework:
 
 6) Ensure your theme is configured to display the _Main page content_ in a
     region that spans the width of the screen (aka, edge-to-edge). We recommend
-    using the _IU Page Layout_ from the _IU theme_ which comes preloaded upon
-    installation with two Main page content blocks;  one for node pages and
-    one for non-node pages. The Main page content block for nodes is placed in
-    the IU theme's Edge-to-edge region, while non-node Main page content block
-    is in the standard Content region which has a constrained maximum width.
+    using the _IU theme_  which contains appropriately labeled regions to
+    support both edge-to-edge (for node pages) and constrained for non-node
+    page content. The theme comes preloaded upon installation with two Main
+    page content blocks;  one for node pages and one for non-node pages. The
+    Main page content block for nodes is placed in the IU theme's Edge-to-edge
+    region, while non-node Main page content block is in the standard Content
+    region which has a constrained maximum width.
 
 # Credits
 
