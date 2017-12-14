@@ -1,6 +1,7 @@
 # Paragraphs for Indiana University
 
-This module provides custom Paragraph types for building complex pages comprised of elements from the [IU Pattern Library][1] like <em>section,
+This module provides custom Paragraph types for building complex pages
+comprised of elements from the [IU Pattern Library][1] like <em>section,
 grids, and chunks</em>  that conform to the design standards in the
 [IU Web Style Guide][1].
 

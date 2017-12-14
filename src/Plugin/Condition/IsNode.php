@@ -3,7 +3,6 @@
 namespace Drupal\iu_paragraphs\Plugin\Condition;
 
 use Drupal\Core\Condition\ConditionPluginBase;
-use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -24,23 +23,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class IsNode extends ConditionPluginBase implements ContainerFactoryPluginInterface {
-
-  /**
-   * Creates a new IsNode instance.
-   *
-   * @param array $configuration
-   *   The plugin configuration, i.e. an array with configuration values keyed
-   *   by configuration option name. The special key 'context' may be used to
-   *   initialize the defined contexts by setting it to an array of context
-   *   values keyed by context names.
-   * @param string $plugin_id
-   *   The plugin_id for the plugin instance.
-   * @param mixed $plugin_definition
-   *   The plugin implementation definition.
-   */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition) {
-      parent::__construct($configuration, $plugin_id, $plugin_definition);
-   }
 
   /**
    * {@inheritdoc}
@@ -69,8 +51,8 @@ class IsNode extends ConditionPluginBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
-     $this->configuration['is_node'] = $form_state->getValue('is_node');
-     parent::submitConfigurationForm($form, $form_state);
+    $this->configuration['is_node'] = $form_state->getValue('is_node');
+    parent::submitConfigurationForm($form, $form_state);
   }
 
   /**
@@ -80,9 +62,9 @@ class IsNode extends ConditionPluginBase implements ContainerFactoryPluginInterf
     return ['is_node' => ''] + parent::defaultConfiguration();
   }
 
-/**
- * {@inheritdoc}
- */
+  /**
+   * {@inheritdoc}
+   */
   public function evaluate() {
     if (empty($this->configuration['is_node']) && !$this->isNegated()) {
       return TRUE;
