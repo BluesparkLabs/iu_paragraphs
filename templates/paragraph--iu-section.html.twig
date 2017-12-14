@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * IU Framework Paragraphs template for displaying IU Framework Sections.
+ * IU Paragraphs template for displaying IU Pattern Library Sections.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -32,8 +32,23 @@
  *   current user is a logged-in member.
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
+ * - bgimage: the string URL of the iu_section_background_image or an empty
+ *   string if no background image is present.
+ * - parallax: Flag indicating if parallax should be used to scroll the
+ *   background image.
+ * - hr: Flag indicating if a visual horizontal dividing line should be added
+ *   at the end of this section.
+ * - height: the string indicating which height to use. Values include
+ *  'standard' or 'collapsed'.
+ * - width: the string indicating which width to use. Values include
+ *  'standard' or 'narrow'.
+ * - bgcolor: the css classname associated with the background color field
+ *   value specified for this section.
+ * - styles: a string of space-separated additional modifier classes from the
+ *   IU Framework CSS used to style this section.
  *
  * @see template_preprocess_paragraph()
+ * @see iu_paragraphs_preprocess_paragraph__iu_section()
  *
  * @ingroup themeable
  */

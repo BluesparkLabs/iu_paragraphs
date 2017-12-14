@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * IU Framework Paragraphs template for displaying a Carousel.
+ * IU Paragraphs template for displaying a Carousel.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -32,18 +32,23 @@
  *   is an administrator.
  *
  * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
  */
 #}
+
+{% set cta_text = content._field_layout.content.iu_cta_text %}
+{% set cta_actions = content._field_layout.content.iu_cta_actions %}
 
 <div{{ attributes.addClass('text')}}>
   {{ title_suffix }}
 
-  {% for key, item in content._field_layout.content.iu_cta_text if key|first != '#' %}
+  {% for key, item in cta_text if key|first != '#' %}
   <h2>{{ item }}</h2>
   {% endfor %}
 
   <ul class="button-group cta">
-  {% for key, item in content._field_layout.content.iu_cta_actions if key|first != '#' %}
+  {% for key, item in cta_actions if key|first != '#' %}
     <li>{{ item|merge({'#attributes': {'class': ['button']}}) }}</li>
   {% endfor %}
   </ul>

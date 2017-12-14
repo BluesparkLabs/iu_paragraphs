@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default theme implementation to display a paragraph in IU Framework Paragraphs.
+ * IU Paragraphs template to format an Image for IU Pattern Library.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -37,16 +37,12 @@
  */
 #}
 
-{{ attach_library('iu_paragraphs/iu-paragraphs') }}
-{{ attach_library('iu_paragraphs/iu-image') }}
-
-{# The template default set classes. #}
 {%
-set classes = [
-'paragraph',
-'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-]
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  ]
 %}
 
 {# Prints div with classes, and content without Width and Background. #}

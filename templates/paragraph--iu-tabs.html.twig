@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * IU Framework Paragraphs template for displaying IU Framework Tabs.
+ * IU Paragraphs template for displaying Zurb Foundation Tabs.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -39,13 +39,14 @@
 
 {{ attach_library('iu_paragraphs/iu-tabs') }}
 
-{# The template default set classes. #}
+{% set tab_sections = content._field_layout.content.iu_tab_section %}
+
 {%
-set classes = [
-'paragraph',
-'paragraph--type--' ~ paragraph.bundle|clean_class,
-view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-]
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  ]
 %}
 
 {# Sets Unique ID for Accordion from Paragraph ID. #}
@@ -56,17 +57,19 @@ view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
   {{ title_suffix }}
   <ul class="tabs" data-active-collapse="true" data-deep-link="true" data-deep-link-smudge="true" role="tablist" data-tabs id="{{ paragraph_id }}">
     {# Loops through the tab sections to print the tab section titles. #}
-    {% for key, item in content._field_layout.content.iu_tab_section if key|first != '#' %}
-      {% set id = item['#paragraph'].id.value %}
-      <li role="presentation" class="tabs-title{% if loop.first %} is-active{% endif %}"><a href="#panel{{ id }}" aria-controls="{{ item['#paragraph'].iu_tab_section_title.value }}" role="tab"{% if loop.first %}  aria-selected="true"{% endif %} data-tabs-target="panel{{ id }}" >{{ item['#paragraph'].iu_tab_section_title.value }}</a></li>
+    {% for key, item in tab_sections if key|first != '#' %}
+      {% set section = item['#paragraph'] %}
+      {% set id = section.id.value %}
+      <li role="presentation" class="tabs-title{% if loop.first %} is-active{% endif %}"><a href="#panel{{ id }}" aria-controls="{{ section.iu_tab_section_title.value }}" role="tab"{% if loop.first %}  aria-selected="true"{% endif %} data-tabs-target="panel{{ id }}" >{{ section.iu_tab_section_title.value }}</a></li>
     {% endfor %}
   </ul>
   <div class="tabs-content" data-tabs-content="{{ paragraph_id }}">
   {# Loops through the tab sections again to print the tab section bodies. #}
-  {% for key, item in content._field_layout.content.iu_tab_section if key|first != '#' %}
-    {% set id = item['#paragraph'].id.value %}
+  {% for key, item in tab_sections if key|first != '#' %}
+    {% set section = item['#paragraph'] %}
+    {% set id = section.id.value %}
     <div role="tabpanel" class="tabs-panel{% if loop.first %} is-active{% endif %}" id="panel{{ id }}">
-      {% for body_key, body_item in item['#paragraph'].iu_tab_section_body %}
+      {% for body_key, body_item in section.iu_tab_section_body %}
         {# Use the same render array as item and set the '#paragraph'. #}
         {% set section_body = item %}
         {# Load the entity for the current translation #}

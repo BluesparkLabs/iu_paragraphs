@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * IU Framework Paragraphs template for displaying a Carousel.
+ * IU Paragraphs template for displaying a Carousel.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -32,8 +32,12 @@
  *   is an administrator.
  *
  * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
  */
 #}
+
+{% set slide_content = content._field_layout.content.iu_slide_content %}
 
 {%
   set classes = [
@@ -48,7 +52,7 @@
 <div{{ attributes.addClass(classes).setAttribute('id', paragraph_id)}}>
   {{ title_suffix }}
 
-  {% for key, item in content._field_layout.content.iu_slide_content if key|first != '#' %}
+  {% for key, item in slide_content if key|first != '#' %}
     <figure class="media image" role="listitem">
       {{ item }}
     </figure>

@@ -41,7 +41,8 @@
 
 {{ attach_library('iu_paragraphs/iu-grid-builder') }}
 
-{% set count = content._field_layout.content.iu_grid_builder_columns['#items']|length %}
+{% set columns = content._field_layout.content.iu_grid_builder_columns %}
+{% set count = columns['#items']|length %}
 {%
   set classes = [
     count > 1 ? 'grid',
@@ -58,7 +59,7 @@
         Avoid extra field wrapper divs ensuring the columns are rendered
         directly to maintain the DOM structure required by the IU Framework.
       #}
-      {% for key, item in content._field_layout.content.iu_grid_builder_columns if key|first != '#' %}
+      {% for key, item in columns if key|first != '#' %}
         {{ item }}
       {% endfor %}
     {% endblock %}

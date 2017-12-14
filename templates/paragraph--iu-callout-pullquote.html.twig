@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * IU Framework Paragraphs template for displaying a Callout or Pullquote.
+ * IU Paragraphs template for displaying a Callout or Pullquote.
  *
  * Available variables:
  * - paragraph: Full paragraph entity.
@@ -35,8 +35,15 @@
  *   simple callout.
  *
  * @see template_preprocess_paragraph()
+ * @see iu_paragraphs_preprocess_paragraph__iu_callout_pullquote()
+ *
+ * @ingroup themeable
  */
 #}
+
+{% set image = content._field_layout.content.iu_callout_image %}
+{% set text = content._field_layout.content.iu_callout_content %}
+{% set attribution = content._field_layout.content.iu_quote_attribution %}
 
 {%
   set classes = [
@@ -49,18 +56,18 @@
 
   {% if has_image %}
   <figure class="media{{ is_pullquote ? ' circle' }}">
-    {{ content._field_layout.content.iu_callout_image }}
+    {{ image }}
   </figure>
   {% endif %}
 
   {% if is_pullquote %}
   <blockquote>
-    {{ content._field_layout.content.iu_callout_content }}
-    <cite>{{ content._field_layout.content.iu_quote_attribution }}</cite>
+    {{ text }}
+    <cite>{{ attribution }}</cite>
   </blockquote>
   {% else %}
   <div class="content">
-    {{ content._field_layout.content.iu_callout_content }}
+    {{ text }}
   </div>
   {% endif %}
 </div>
