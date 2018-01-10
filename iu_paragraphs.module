@@ -55,6 +55,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'paragraph__iu_feature' => [
       'base hook' => 'paragraph',
     ],
+    'paragraph__iu_feature_carousel' => [
+      'base hook' => 'paragraph',
+    ],
     'paragraph__iu_grid_builder' => [
       'base hook' => 'paragraph',
     ],

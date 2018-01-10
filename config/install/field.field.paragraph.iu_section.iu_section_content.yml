@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.iu_carousel
     - paragraphs.paragraphs_type.iu_cta
     - paragraphs.paragraphs_type.iu_feature
+    - paragraphs.paragraphs_type.iu_feature_carousel
     - paragraphs.paragraphs_type.iu_grid_builder
     - paragraphs.paragraphs_type.iu_image
     - paragraphs.paragraphs_type.iu_panel
@@ -41,6 +42,7 @@ settings:
       iu_callout_pullquote: iu_callout_pullquote
       iu_carousel: iu_carousel
       iu_feature: iu_feature
+      iu_feature_carousel: iu_feature_carousel
       iu_panel_interactive: iu_panel_interactive
       iu_panel: iu_panel
       iu_stats: iu_stats
@@ -52,59 +54,62 @@ settings:
     target_bundles_drag_drop:
       iu_text:
         enabled: true
-        weight: -39
+        weight: -41
       iu_image:
         enabled: true
-        weight: -38
+        weight: -40
       iu_cta:
         enabled: true
-        weight: -37
+        weight: -39
       iu_callout_pullquote:
         enabled: true
-        weight: -36
+        weight: -38
       iu_carousel:
         enabled: true
-        weight: -35
+        weight: -37
       iu_feature:
         enabled: true
-        weight: -34
+        weight: -36
+      iu_feature_carousel:
+        enabled: true
+        weight: -35
       iu_panel_interactive:
         enabled: true
-        weight: -33
+        weight: -34
       iu_panel:
         enabled: true
-        weight: -32
+        weight: -33
       iu_stats:
         enabled: true
-        weight: -31
+        weight: -32
       iu_accordion:
         enabled: true
-        weight: -30
+        weight: -31
       iu_tabs:
         enabled: true
-        weight: -29
+        weight: -30
       iu_grid_builder:
         enabled: true
-        weight: -28
+        weight: -29
       iu_block:
         enabled: true
-        weight: -27
+        weight: -28
       iu_view:
         enabled: true
-        weight: -26
+        weight: -27
       iu_accordion_section:
-        weight: -25
+        weight: -26
         enabled: false
       iu_grid_item:
-        weight: -24
+        weight: -25
         enabled: false
       iu_section:
-        weight: -23
+        weight: -24
         enabled: false
       iu_stat:
-        weight: -22
+        weight: -23
         enabled: false
       iu_tab_section:
-        weight: -21
+        weight: -22
         enabled: false
 field_type: entity_reference_revisions
