@@ -27,7 +27,7 @@ entity_type: paragraph
 bundle: iu_section
 label: 'Section content'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
