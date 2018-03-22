@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.svg.field_media_categories
+    - field.field.media.svg.field_media_svg
+    - media.type.svg
+  module:
+    - field_layout
+    - layout_discovery
+    - svg_image_field
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: media.svg.default
+targetEntityType: media
+bundle: svg
+mode: default
+content:
+  field_media_svg:
+    label: hidden
+    settings:
+      inline: false
+      apply_dimensions: true
+      width: 25
+      height: 25
+      enable_alt: true
+      enable_title: true
+      link: ''
+    third_party_settings: {  }
+    type: svg_image_field_formatter
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_media_categories: true
+  name: true
+  thumbnail: true
+  uid: true
