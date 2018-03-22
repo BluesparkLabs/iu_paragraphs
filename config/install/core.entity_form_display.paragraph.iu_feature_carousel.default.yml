@@ -32,5 +32,6 @@ content:
       default_paragraph_type: iu_feature
     third_party_settings: {  }
 hidden:
-  created: true  status: true
+  created: true
+  status: true
   uid: true

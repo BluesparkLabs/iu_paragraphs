@@ -46,7 +46,8 @@ content:
     weight: 0
     region: content
 hidden:
-  created: true  name: true
+  created: true
+  name: true
   path: true
   status: true
   uid: true
