@@ -37,6 +37,18 @@
  */
 #}
 
+{% if content._field_layout.content %}
+  {% set content = content._field_layout.content %}
+{% endif %}
+
+{% set has_title = content.iu_image_caption_title|render is not empty %}
+{% set has_description = content.iu_image_caption_description|render is not empty %}
+{% set has_caption = has_title or has_description %}
+{% set has_link = content.iu_link|render is not empty %}
+{% if has_link %}
+{% set url = content.iu_link.0['#url'] %}
+{% set title = content.iu_link.0['#title'] %}
+{% endif %}
 {%
   set classes = [
     'paragraph',
@@ -47,14 +59,20 @@
 
 {# Prints div with classes, and content without Width and Background. #}
 <div{{ attributes.addClass(classes) }}>
-  <div class="paragraph__column">
-    {{ title_suffix }}
-    {% if content.iu_link|render is not empty %}
-      <a href="{{ content.iu_link.0['#url'] }}">
+  {{ title_suffix }}
+  {% if has_link %}
+    <a href="{{ url }}" title="{{ title }}">
+  {% endif %}
+  <{{ has_caption ? 'figure' : 'div'}} class="paragraph__column">
+      {{ content|without('iu_image_caption_title', 'iu_image_caption_description', 'iu_link') }}
+    {% if has_caption %}
+    <figcaption>
+      {{ content.iu_image_caption_title }}
+      {{ content.iu_image_caption_description }}
+    </figcaption>
     {% endif %}
-      {{ content|without('iu_width', 'iu_background', 'iu_link') }}
-    {% if content.iu_link|render is not empty %}
-      </a>
-    {% endif %}
-  </div>
+  </{{ has_caption ? 'figure' : 'div'}}>
+  {% if has_link %}
+    </a>
+  {% endif %}
 </div>
