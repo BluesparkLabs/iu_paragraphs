@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_attribution
+    - field.storage.media.iu_media_attribution
     - media.type.image
-id: media.image.field_media_attribution
-field_name: field_media_attribution
+id: media.image.iu_media_attribution
+field_name: iu_media_attribution
 entity_type: media
 bundle: image
 label: Attribution

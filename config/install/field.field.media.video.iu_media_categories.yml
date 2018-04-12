@@ -2,13 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_categories
-    - media.type.audio
+    - field.storage.media.iu_media_categories
+    - media.type.video
     - taxonomy.vocabulary.media_categories
-id: media.audio.field_media_categories
-field_name: field_media_categories
+id: media.video.iu_media_categories
+field_name: iu_media_categories
 entity_type: media
-bundle: audio
+bundle: video
 label: Categories
 description: ''
 required: false

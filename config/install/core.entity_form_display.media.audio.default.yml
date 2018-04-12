@@ -2,8 +2,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.audio.field_media_categories
-    - field.field.media.audio.field_media_file
+    - field.field.media.audio.iu_media_categories
+    - field.field.media.audio.iu_media_file
     - media.type.audio
   module:
     - autocomplete_deluxe
@@ -19,7 +19,7 @@ targetEntityType: media
 bundle: audio
 mode: default
 content:
-  field_media_categories:
+  iu_media_categories:
     type: autocomplete_deluxe
     weight: 1
     region: content
@@ -36,7 +36,7 @@ content:
       size: 60
       selection_handler: default
     third_party_settings: {  }
-  field_media_file:
+  iu_media_file:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }

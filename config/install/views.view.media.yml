@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_categories
+    - field.storage.media.iu_media_categories
     - image.style.thumbnail
     - taxonomy.vocabulary.media_categories
   module:
@@ -333,10 +333,10 @@ display:
           entity_type: media
           entity_field: bundle
           plugin_id: field
-        field_media_categories:
-          id: field_media_categories
-          table: media__field_media_categories
-          field: field_media_categories
+        iu_media_categories:
+          id: iu_media_categories
+          table: media__iu_media_categories
+          field: iu_media_categories
           relationship: none
           group_type: group
           admin_label: ''
@@ -642,10 +642,10 @@ display:
           plugin_id: boolean
           entity_type: media
           entity_field: status
-        field_media_categories_target_id:
-          id: field_media_categories_target_id
-          table: media__field_media_categories
-          field: field_media_categories_target_id
+        iu_media_categories_target_id:
+          id: iu_media_categories_target_id
+          table: media__iu_media_categories
+          field: iu_media_categories_target_id
           relationship: none
           group_type: group
           admin_label: ''
@@ -654,11 +654,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_media_categories_target_id_op
+            operator_id: iu_media_categories_target_id_op
             label: Category
             description: ''
             use_operator: false
-            operator: field_media_categories_target_id_op
+            operator: iu_media_categories_target_id_op
             identifier: categories
             required: false
             remember: false
@@ -743,7 +743,7 @@ display:
         - user
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_media_categories'
+        - 'config:field.storage.media.iu_media_categories'
   media_page_list:
     display_plugin: page
     id: media_page_list
@@ -772,4 +772,4 @@ display:
         - user
         - user.permissions
       tags:
-        - 'config:field.storage.media.field_media_categories'
+        - 'config:field.storage.media.iu_media_categories'

@@ -4,8 +4,8 @@ dependencies:
   module:
     - media
     - taxonomy
-id: media.field_media_categories
-field_name: field_media_categories
+id: media.iu_media_categories
+field_name: iu_media_categories
 entity_type: media
 type: entity_reference
 settings:

@@ -2,17 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_categories
-    - media.type.image
+    - field.storage.media.iu_media_categories
+    - media.type.document
     - taxonomy.vocabulary.media_categories
-id: media.image.field_media_categories
-field_name: field_media_categories
+id: media.document.iu_media_categories
+field_name: iu_media_categories
 entity_type: media
-bundle: image
+bundle: document
 label: Categories
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -23,6 +23,6 @@ settings:
     sort:
       field: name
       direction: asc
-    auto_create: true
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

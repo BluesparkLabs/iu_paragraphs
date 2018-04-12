@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.media.field_media_file
-    - media.type.video
+    - field.storage.media.iu_media_file
+    - media.type.document
   module:
     - file
-id: media.video.field_media_file
-field_name: field_media_file
+id: media.document.iu_media_file
+field_name: iu_media_file
 entity_type: media
-bundle: video
+bundle: document
 label: File
 description: ''
 required: true
@@ -17,8 +17,8 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: media/video
-  file_extensions: '3g2 3gp amv asf avi drc flv gif gifv m4v mkv mng mov mp4 mpg mxf nsv ogv rm rmvb roq svi vob webm wmv yuv'
+  file_directory: media/document
+  file_extensions: 'txt doc docx pdf'
   max_filesize: ''
   description_field: false
   handler: 'default:file'

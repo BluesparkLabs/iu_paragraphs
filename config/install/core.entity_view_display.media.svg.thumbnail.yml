@@ -3,8 +3,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.thumbnail
-    - field.field.media.svg.field_media_categories
-    - field.field.media.svg.field_media_svg
+    - field.field.media.svg.iu_media_categories
+    - field.field.media.svg.iu_media_svg
     - media.type.svg
   module:
     - field_layout
@@ -19,7 +19,7 @@ targetEntityType: media
 bundle: svg
 mode: thumbnail
 content:
-  field_media_svg:
+  iu_media_svg:
     label: hidden
     settings:
       inline: '1'
@@ -35,7 +35,7 @@ content:
     region: content
 hidden:
   created: true
-  field_media_categories: true
+  iu_media_categories: true
   name: true
   thumbnail: true
   uid: true

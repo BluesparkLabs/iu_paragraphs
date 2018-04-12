@@ -1,29 +1,24 @@
 langcode: en
 status: true
 dependencies:
-  enforced:
-    module:
-      - media
   module:
     - file
-    - image
     - media
-id: media.field_media_image
-field_name: field_media_image
+    - svg_image_field
+id: media.iu_media_svg
+field_name: iu_media_svg
 entity_type: media
-type: image
+type: svg_image_field
 settings:
   default_image:
     uuid: null
     alt: ''
     title: ''
-    width: null
-    height: null
   target_type: file
   display_field: false
   display_default: false
   uri_scheme: public
-module: image
+module: svg_image_field
 locked: false
 cardinality: 1
 translatable: true

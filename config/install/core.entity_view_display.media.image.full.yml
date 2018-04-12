@@ -3,9 +3,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.media.full
-    - field.field.media.image.field_media_attribution
-    - field.field.media.image.field_media_categories
-    - field.field.media.image.field_media_image
+    - field.field.media.image.iu_media_attribution
+    - field.field.media.image.iu_media_categories
+    - field.field.media.image.iu_media_image
     - media.type.image
   module:
     - field_layout
@@ -20,7 +20,7 @@ targetEntityType: media
 bundle: image
 mode: full
 content:
-  field_media_image:
+  iu_media_image:
     label: hidden
     settings:
       image_style: ''
@@ -31,8 +31,8 @@ content:
     region: content
 hidden:
   created: true
-  field_media_attribution: true
-  field_media_categories: true
+  iu_media_attribution: true
+  iu_media_categories: true
   name: true
   thumbnail: true
   uid: true

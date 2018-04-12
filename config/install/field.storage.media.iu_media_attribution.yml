@@ -3,8 +3,8 @@ status: true
 dependencies:
   module:
     - media
-id: media.field_media_attribution
-field_name: field_media_attribution
+id: media.iu_media_attribution
+field_name: iu_media_attribution
 entity_type: media
 type: string_long
 settings:
