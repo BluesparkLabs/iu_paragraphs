@@ -3,7 +3,7 @@ status: true
 dependencies:
   config:
     - media.type.image
-    - views.view.media_entity_browser
+    - views.view.iu_media_entity_browser
   module:
     - dropzonejs_eb_widget
     - media
@@ -23,7 +23,7 @@ widget_selector_configuration: {  }
 widgets:
   780fda25-eff5-48ca-b202-409731ff8bc7:
     settings:
-      view: media_entity_browser
+      view: iu_media_entity_browser
       view_display: entity_browser_1
       submit_text: Done
       auto_select: false
