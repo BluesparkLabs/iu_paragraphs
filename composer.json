@@ -23,7 +23,8 @@
     "drupal/media_entity_browser": "^2.0@alpha",
     "drupal/field_group": "^3.0",
     "drupal/iu": "1.x-dev",
-    "drupal/paragraphs": "1.x-dev"
+    "drupal/paragraphs": "1.x-dev",
+    "drupal/svg_image_field": "1.x-dev"
   },
   "require-dev": {
     "drupal/styleguide": "^1.0"

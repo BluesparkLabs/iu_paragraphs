@@ -54,6 +54,7 @@ IU Framework:
 * [IU theme][3]
 * Paragraphs - w/ patch from Issue #2868155
 * ViewsReference
+* SVG Image Field (dev version or patch from Issue #2920329)
 
 
 # Installation
