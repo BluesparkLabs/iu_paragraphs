@@ -4,6 +4,6 @@ description: Embed Webforms into Paragraphs, compatible with the IU Web Framewor
 core: 8.x
 package: Paragraphs
 dependencies:
-  - paragraphs
-  - iu_paragraphs
-  - webform
+  - iu_paragraphs:iu_paragraphs
+  - paragraphs:paragraphs
+  - webform:webform
