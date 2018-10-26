@@ -67,6 +67,12 @@ IU Framework:
     Revision); For _Reference Type_, include only the Section type;
 
 4) We recommend the _Paragraphs Experimental_ field widget for Form Display.
+    Note that the IU Paragraphs implements a nested Paragraphs architecture,
+    so it is highly recommended to install the _Sortable.js_ library to
+    leverage the advanced Drag & Drop feature in the Experimental widget
+    because the basic tabledrag feature only allows you to reorder items
+    within a single level. Follow Sortable.js installation instructions in
+    the Paragraphs module's README.
 
 5) Ensure your _Sections_ field and node type display is configured in an
     _Edge-to-edge_ layout. See _Layout settings_ on the _Manage display_ tab
