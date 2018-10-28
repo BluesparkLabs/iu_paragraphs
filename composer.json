@@ -21,6 +21,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/autocomplete_deluxe": "^1.0@beta",
     "drupal/media_entity_browser": "^2.0@alpha",
+    "drupal/entity_browser": "8.1.x-dev",
     "drupal/field_group": "^3.0",
     "drupal/iu": "1.x-dev",
     "drupal/paragraphs": "1.x-dev",
@@ -30,12 +31,16 @@
     "drupal/styleguide": "^1.0"
   },
   "extra": {
+    "enable-patching": true,
     "patches": {
       "drupal/core": {
         "Issue #2890758: Block visibility rules in node preview": "https://www.drupal.org/files/issues/block_visibility_node_type_not_working_in_preview_mode-2890758-1.patch"
       },
+      "drupal/entity_browser": {
+        "Issue #2865928: The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-14.patch"
+      },
       "drupal/paragraphs": {
-          "Issue #2868155: new hooks for editing paragraphs subforms": "https://www.drupal.org/files/issues/2868155-16.patch"
+        "Issue #2868155: new hooks for editing paragraphs subforms": "https://www.drupal.org/files/issues/2868155-16.patch"
       }
     }
   }
