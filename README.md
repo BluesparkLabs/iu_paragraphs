@@ -52,7 +52,7 @@ IU Framework:
 
 * Field Group
 * [IU theme][3]
-* Paragraphs - w/ patch from Issue #2868155
+* Paragraphs
 * ViewsReference
 * SVG Image Field (dev version or patch from Issue #2920329)
 

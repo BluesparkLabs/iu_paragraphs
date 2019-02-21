@@ -256,10 +256,71 @@ function iu_paragraphs_field_widget_info_alter(array &$info) {
 }
 
 /**
- * Implements hook_form_paragraphs_subform_TYPE_alter() for Panels chunks.
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Widget : Paragraphs Experimental : paragraphs
  */
-function iu_paragraphs_form_paragraphs_subform_iu_panel_alter(array &$subform, FormStateInterface $form_state, $delta) {
-  $paragraph = $form_state->get('paragraph');
+function iu_paragraphs_field_widget_paragraphs_form_alter(array &$element, FormStateInterface &$form_state, $context) {
+
+  // Only process paragraphs that are fully loaded, not collapsed.
+  if (empty($element['#paragraph_type']) || empty($element['subform']['#entity_type'])) {
+    return;
+  }
+
+  switch($element['#paragraph_type']) {
+    case 'iu_panel':
+      _iu_paragraphs_iu_panel_alter($element, $form_state, $context);
+      break;
+    case 'iu_section':
+      _iu_paragraphs_iu_section_alter($element, $form_state, $context);
+      break;
+    default:
+      break;
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Widget type : Paragraphs EXPERIMENTAL : entity_reference_paragraphs
+ */
+function iu_paragraphs_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
+  iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Widget : Paragraphs Classic Asymmetric : paragraphs_classic_asymmetric
+ */
+function iu_paragraphs_field_widget_paragraphs_classic_asymmetric_form_alter(&$element, &$form_state, $context) {
+  iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Widget : Paragraphs Previewer & Paragraphs Classic : entity_reference_paragraphs_previewer
+ */
+function iu_paragraphs_field_widget_entity_reference_paragraphs_previewer_form_alter(&$element, &$form_state, $context) {
+  iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Widget : Paragraphs Previewer & Paragraphs EXPERIMENTAL : paragraphs_previwer
+ *
+ */
+function iu_paragraphs_field_widget_paragraphs_previwer_form_alter(&$element, &$form_state, $context) {
+  iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
+}
+
+/**
+ * Processor for hook_field_widget_WIDGET_TYPE_form_alter for Panels chunks.
+ */
+function _iu_paragraphs_iu_panel_alter(array &$element, FormStateInterface &$form_state, $context) {
+  $subform = &$element['subform'];
 
   // Remove the "- None -" option from the header level dropdown. Why Drupal
   // doesn't let you do this through configuration is beyond me.
@@ -269,10 +330,10 @@ function iu_paragraphs_form_paragraphs_subform_iu_panel_alter(array &$subform, F
 }
 
 /**
- * Implements hook_form_paragraphs_subform_TYPE_alter() for Sections.
+ * Processor for hook_field_widget_WIDGET_TYPE_form_alter for Sections.
  */
-function iu_paragraphs_form_paragraphs_subform_iu_section_alter(array &$subform, FormStateInterface $form_state, $delta) {
-  $paragraph = $form_state->get('paragraph');
+function _iu_paragraphs_iu_section_alter(array &$element, FormStateInterface $form_state, $context) {
+  $subform = &$element['subform'];
 
   $secondary_color = theme_get_setting('secondary_color', 'iu');
   if (empty($secondary_color)) {

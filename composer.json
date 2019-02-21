@@ -38,9 +38,6 @@
       },
       "drupal/entity_browser": {
         "Issue #2865928: The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-14.patch"
-      },
-      "drupal/paragraphs": {
-        "Issue #2868155: new hooks for editing paragraphs subforms": "https://www.drupal.org/files/issues/2868155-16.patch"
       }
     }
   }
