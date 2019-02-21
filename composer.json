@@ -21,7 +21,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/autocomplete_deluxe": "^1.0@beta",
     "drupal/media_entity_browser": "^2.0@alpha",
-    "drupal/entity_browser": "8.1.x-dev",
+    "drupal/entity_browser": "^2.0",
     "drupal/field_group": "^3.0",
     "drupal/iu": "1.x-dev",
     "drupal/paragraphs": "1.x-dev",
