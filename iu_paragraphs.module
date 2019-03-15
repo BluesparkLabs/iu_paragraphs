@@ -7,12 +7,19 @@
 
 use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * Implements hook_theme().
  */
 function iu_paragraphs_theme($existing, $type, $theme, $path) {
   return [
+    'field__iu_banner_header' => [
+      'base hook' => 'field',
+    ],
+    'field__iu_banner_subhead' => [
+      'base hook' => 'field',
+    ],
     'field__iu_feature_link' => [
       'base hook' => 'field',
     ],
@@ -41,6 +48,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
       'base hook' => 'field',
     ],
     'paragraph__iu_accordion' => [
+      'base hook' => 'paragraph',
+    ],
+    'paragraph__iu_banner' => [
       'base hook' => 'paragraph',
     ],
     'paragraph__iu_callout_pullquote' => [
@@ -89,6 +99,18 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Prepares variables for `field--iu-banner-link.html.twig`.
+ */
+function iu_paragraphs_preprocess_field__iu_banner_link(&$variables) {
+  // Add the 'button' class to Feature link.  In Drupal 8, we try to avoid
+  // adding classes in preprocess, however there is currently not a clean way
+  // to do this in the Twig template.
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['content']['#options']['attributes']['class'][] = 'button';
+  }
+}
+
+/**
  * Prepares variables for `field--iu-feature-link.html.twig`.
  */
 function iu_paragraphs_preprocess_field__iu_feature_link(&$variables) {
@@ -110,6 +132,44 @@ function iu_paragraphs_preprocess_field__iu_stat_link(&$variables) {
   if (!empty($variables['items'][0])) {
     $variables['items'][0]['content']['#options']['attributes']['class'][] = 'button';
   }
+}
+
+/**
+ * Prepares variables for `paragraph--iu-banner.html.twig`.
+ */
+function iu_paragraphs_preprocess_paragraph__iu_banner(&$variables) {
+  $p = $variables['paragraph'];
+
+  // Setup background image variable.
+  if (!empty($p->iu_banner_image) && $entity = $p->iu_banner_image->entity) {
+    $type = $entity->getEntityTypeId();
+    $bundle = $entity->bundle();
+    if ($type == 'media') {
+      if ($bundle == 'image') {
+        $entity = $entity->field_media_image->first()->entity;
+      } elseif ($bundle == 'svg') {
+        $entity = $entity->field_media_svg->first()->entity;
+      }
+    }
+    $uri = $entity->getFileUri();
+    $small = ImageStyle::load('iu_one_half_standard');
+    $medium = ImageStyle::load('iu_full_wide');
+    $large = ImageStyle::load('iu_banner');
+    $variables['bgimage_small'] = file_url_transform_relative($small->buildUrl($uri));
+    $variables['bgimage_medium'] = file_url_transform_relative($medium->buildUrl($uri));
+    $variables['bgimage_large'] = file_url_transform_relative($large->buildUrl($uri));
+    if ($bundle == 'svg') {
+      $variables['is_svg'] = TRUE;
+      $url = file_create_url($entity->getFileUri());
+      $url = file_url_transform_relative($url);
+      $variables['bgimage_small'] =
+      $variables['bgimage_medium'] =
+      $variables['bgimage_large'] = $url;
+    }
+  }
+
+  // Setup background color class name variable.
+  _iu_paragraphs_preprocess_paragraph__iu_section_background_color($variables);
 }
 
 /**
@@ -178,32 +238,7 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   $variables['bgimage'] = !empty($bgimage) ? file_url_transform_relative(file_create_url($bgimage->getFileUri())) : FALSE;
 
   // Setup background color class name variable.
-  $bgcolor = $p->iu_section_background_color->getValue();
-  $colorname = !empty($bgcolor[0]['value']) ? $bgcolor[0]['value'] : 'none';
-  $variables['bgcolor'] = 'bg-' . $colorname;
-
-  if (drupal_get_path('theme', 'iu')) {
-    // Load IU color palette and display section background color options as
-    // color blocks. (Please excuse the tight coupling with the IU theme, it
-    // couldn't be helped to satisfy the IU Styleguide options).
-    require_once drupal_get_path('theme', 'iu') . '/iu.theme';
-    $colors = _iu_secondary_color_palette_options();
-
-    // Determine the real colorname of the secondary color based on the IU
-    // Theme settings to help us determine whether to add the bg-dark class
-    // below.
-    if ($colorname == 'secondary') {
-      $colorname = theme_get_setting('secondary_color', 'iu');
-      if (empty($colorname)) {
-        $colorname = 'none';
-      }
-    }
-
-    // Add bg-dark class for certain colors.
-    if (!empty($colors[$colorname]) && $colors[$colorname]['is_dark'] == TRUE) {
-      $variables['bgcolor'] .= ' bg-dark';
-    }
-  }
+  _iu_paragraphs_preprocess_paragraph__iu_section_background_color($variables);
 
   // Setup parallax variable.
   $parallax = $p->iu_section_bgparallax->getValue();
@@ -227,6 +262,45 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
     $styles[] = $style['value'];
   }
   $variables['styles'] = implode(' ', $styles);
+}
+
+
+/**
+ * Helper function to setup background color classname variable for
+ * templates that leverage the iu_section_background_color field.
+ */
+function _iu_paragraphs_preprocess_paragraph__iu_section_background_color(&$variables) {
+  $p = $variables['paragraph'];
+
+  // Setup background color class name variable.
+  if (!empty($p->iu_section_background_color)) {
+    $bgcolor = $p->iu_section_background_color->getValue();
+    $colorname = !empty($bgcolor[0]['value']) ? $bgcolor[0]['value'] : 'none';
+    $variables['bgcolor'] = 'bg-' . $colorname;
+
+    if (drupal_get_path('theme', 'iu')) {
+      // Load IU color palette and display section background color options as
+      // color blocks. (Please excuse the tight coupling with the IU theme, it
+      // couldn't be helped to satisfy the IU Styleguide options).
+      require_once drupal_get_path('theme', 'iu') . '/iu.theme';
+      $colors = _iu_secondary_color_palette_options();
+
+      // Determine the real colorname of the secondary color based on the IU
+      // Theme settings to help us determine whether to add the bg-dark class
+      // below.
+      if ($colorname == 'secondary') {
+        $colorname = theme_get_setting('secondary_color', 'iu');
+        if (empty($colorname)) {
+          $colorname = 'none';
+        }
+      }
+
+      // Add bg-dark class for certain colors.
+      if (!empty($colors[$colorname]) && $colors[$colorname]['is_dark'] == TRUE) {
+        $variables['bgcolor'] .= ' bg-dark';
+      }
+    }
+  }
 }
 
 /**
@@ -268,11 +342,15 @@ function iu_paragraphs_field_widget_paragraphs_form_alter(array &$element, FormS
   }
 
   switch($element['#paragraph_type']) {
+    case 'iu_banner':
+      _iu_paragraphs_iu_banner_alter($element, $form_state, $context);
+      _iu_paragraphs_iu_section_background_color_alter($element, $form_state, $context);
+      break;
     case 'iu_panel':
       _iu_paragraphs_iu_panel_alter($element, $form_state, $context);
       break;
     case 'iu_section':
-      _iu_paragraphs_iu_section_alter($element, $form_state, $context);
+      _iu_paragraphs_iu_section_background_color_alter($element, $form_state, $context);
       break;
     default:
       break;
@@ -332,17 +410,25 @@ function _iu_paragraphs_iu_panel_alter(array &$element, FormStateInterface &$for
 /**
  * Processor for hook_field_widget_WIDGET_TYPE_form_alter for Sections.
  */
-function _iu_paragraphs_iu_section_alter(array &$element, FormStateInterface $form_state, $context) {
+function _iu_paragraphs_iu_section_background_color_alter(array &$element, FormStateInterface $form_state, $context) {
   $subform = &$element['subform'];
 
-  $secondary_color = theme_get_setting('secondary_color', 'iu');
-  if (empty($secondary_color)) {
-    $secondary_color = 'none';
+  // Handle missing field.
+  if (empty($subform['iu_section_background_color'])) {
+    return;
   }
 
   // Handle missing theme.
   if (!drupal_get_path('theme', 'iu')) {
     return;
+  }
+
+  // Load secondary color from default theme.
+  // @todo load secondary color from sub-theme of node from
+  // current context
+  $secondary_color = theme_get_setting('secondary_color', 'iu');
+  if (empty($secondary_color)) {
+    $secondary_color = 'none';
   }
 
   // Load IU color palette and display section background color options as
@@ -386,4 +472,63 @@ function _iu_paragraphs_iu_section_alter(array &$element, FormStateInterface $fo
   }
 
   $subform['#attached']['library'][] = 'iu/color-block';
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter() for the Banner
+ * paragraph type.
+ */
+function _iu_paragraphs_iu_banner_alter(array &$element, FormStateInterface $form_state, $context) {
+  $subform = &$element['subform'];
+  $paragraph = $form_state->get('paragraph');
+
+  // Hide or show certain fields based on the Banner Type field. Note:
+  // This feature currently requires a patch from issue #2946856 to the
+  // Paragraphs module for compatibility with Paragraphs Experimental widget.
+  $parents = $subform['#parents'];
+  $parents_input_name = array_shift($parents);
+  $parents_input_name .= '[' . implode('][', $parents) . ']';
+  $type_field_selector = ':input[name="' . $parents_input_name . '[iu_banner_type]"]';
+
+  $types = [
+    'image' => [
+      'iu_banner_image',
+    ],
+    'text' => [
+      'iu_banner_header',
+      'iu_banner_subhead',
+      'iu_banner_content_position',
+      'iu_banner_link',
+      'iu_section_background_color'
+    ],
+    'video' => [
+      'iu_banner_mp4',
+      'iu_banner_webm',
+      'iu_banner_image',
+      'iu_banner_transcript'
+    ],
+    'text_overlay' => [
+      'iu_banner_content_position',
+      'iu_banner_image',
+      'iu_banner_header',
+      'iu_banner_subhead',
+      'iu_banner_link',
+    ],
+    'text_image_50_50' => [
+      'iu_banner_image',
+      'iu_banner_content_position',
+      'iu_banner_header',
+      'iu_banner_subhead',
+      'iu_banner_link',
+      'iu_section_background_color'
+    ],
+  ];
+
+  foreach ($types as $type => $fields) {
+    foreach ($fields as $field) {
+      $subform[$field]['#states']['visible'][] = [
+        $type_field_selector => [['value' => $type]],
+      ];
+    }
+  }
 }

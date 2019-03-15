@@ -33,6 +33,9 @@ Paragraph types currently available with this module include:
 * Drupal View - Embed a Drupal view in a Paragraph via viewsreference module.
 * Form - Embeds a Drupal webform via the included iu_paragraphs_webform
     submodule.
+* Banners - a top-level Paragraph type that may be added as a field in your
+    content types; it can be used to place banner images, videos and text
+    to the top of the page content.
 
 
 # Roadmap
@@ -40,7 +43,6 @@ Paragraph types currently available with this module include:
 The following widgets still need to be implemented to completely support the
 IU Framework:
 
-* Banners
 * Feature
 * Panels
 * Image Essays
@@ -52,7 +54,7 @@ IU Framework:
 
 * Field Group
 * [IU theme][3]
-* Paragraphs
+* Paragraphs (with patch from Issue #2946856)
 * ViewsReference
 * SVG Image Field (dev version or patch from Issue #2920329)
 
@@ -66,7 +68,10 @@ IU Framework:
 3) Add a field named _Sections_ of type _Paragraph_ (aka Entity Reference
     Revision); For _Reference Type_, include only the Section type;
 
-4) We recommend the _Paragraphs Experimental_ field widget for Form Display.
+4) Add a field named _Banner_ of type _Paragraph_ (aka Entity Reference
+    Revision); For _Reference Type_, include only the Banner type;
+
+5) We recommend the _Paragraphs Experimental_ field widget for Form Display.
     Note that the IU Paragraphs implements a nested Paragraphs architecture,
     so it is highly recommended to install the _Sortable.js_ library to
     leverage the advanced Drag & Drop feature in the Experimental widget
@@ -74,7 +79,7 @@ IU Framework:
     within a single level. Follow Sortable.js installation instructions in
     the Paragraphs module's README.
 
-5) Ensure your _Sections_ field and node type display is configured in an
+6) Ensure your _Sections_ field and node type display is configured in an
     _Edge-to-edge_ layout. See _Layout settings_ on the _Manage display_ tab
     of your content type. (Field Layout and Layout Discovery modules must be
     enabled).  We recommend leveraging the _IU Page Layout_ from the IU theme
@@ -84,7 +89,7 @@ IU Framework:
     approach would be to use the Page Manager module to handle field layouts,
     but Page Manager is outside the scope of this instruction manual.
 
-6) Ensure your theme is configured to display the _Main page content_ in a
+7) Ensure your theme is configured to display the _Main page content_ in a
     region that spans the width of the screen (aka, edge-to-edge). We recommend
     using the _IU theme_  which contains appropriately labeled regions to
     support both edge-to-edge (for node pages) and constrained for non-node

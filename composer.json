@@ -38,6 +38,9 @@
       },
       "drupal/entity_browser": {
         "Issue #2865928: The View widget should filter based on field settings": "https://www.drupal.org/files/issues/entity-browser-view-context-2865928-14.patch"
+      },
+      "drupal/paragraphs": {
+        "Issue #2946856: Form states API fix for Paragraphs Experimental widget": "https://www.drupal.org/files/issues/2018-03-16/2946856-do-not-show-hidden-elements.patch"
       }
     }
   }
