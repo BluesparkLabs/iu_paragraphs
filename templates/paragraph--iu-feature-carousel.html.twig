@@ -51,17 +51,29 @@
   ]
 %}
 {% block paragraph %}
-  <div{{ attributes.addClass(classes) }}>
+  {{ attach_library('iu_paragraphs/iu-more-link-wrapper') }}
+  <div{{ attributes.addClass('more-link-wrapper') }}>
     {{ title_suffix }}
     {% block content %}
 
-      {#
-        Avoid extra field wrapper divs ensuring the columns are rendered
-        directly to maintain the DOM structure required by the IU Framework.
-      #}
-      {% for key, item in items if key|first != '#' %}
-        {{ item|merge({'#attributes': {'class': ['grid-item']}}) }}
-      {% endfor %}
+      {% if paragraph.iu_feature_carousel_title.value %}
+        {{ content._field_layout.content.iu_feature_carousel_title }}
+      {% endif %}
+
+      <div class="{{ classes|join(' ') }}">
+        {#
+          Avoid extra field wrapper divs ensuring the columns are rendered
+          directly to maintain the DOM structure required by the IU Framework.
+        #}
+        {% for key, item in items if key|first != '#' %}
+          {{ item|merge({'#attributes': {'class': ['grid-item']}}) }}
+        {% endfor %}
+      </div>
+
+      {% if paragraph.iu_feature_carousel_more_link.value %}
+        {{ content._field_layout.content.iu_feature_carousel_more_link }}
+      {% endif %}
+
     {% endblock %}
   </div>
 {% endblock paragraph %}

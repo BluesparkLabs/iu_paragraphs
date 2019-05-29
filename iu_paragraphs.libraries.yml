@@ -2,6 +2,12 @@ iu-grid-builder:
   css:
     component:
       css/iu-paragraphs-grid-builder.css: { }
+
+iu-more-link-wrapper:
+  css:
+    component:
+      css/iu-more-link-wrapper.css: {}
+
 iu-tabs:
   js:
     # IU Framework uses Foundation 6.2.4.  The Tabs component requires both

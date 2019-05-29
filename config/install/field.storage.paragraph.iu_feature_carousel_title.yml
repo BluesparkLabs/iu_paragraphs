@@ -1,0 +1,20 @@
+uuid: efa47e16-bc9b-43e6-8abb-736b9384ed93
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.iu_feature_carousel_title
+field_name: iu_feature_carousel_title
+entity_type: paragraph
+type: text
+settings:
+  max_length: 1000
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

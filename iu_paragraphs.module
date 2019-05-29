@@ -20,6 +20,12 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'field__iu_banner_subhead' => [
       'base hook' => 'field',
     ],
+    'field__iu_feature_carousel_title' => [
+      'base hook' => 'field',
+    ],
+    'field__iu_feature_carousel_more_link' => [
+      'base hook' => 'field',
+    ],
     'field__iu_feature_link' => [
       'base hook' => 'field',
     ],
@@ -107,6 +113,18 @@ function iu_paragraphs_preprocess_field__iu_banner_link(&$variables) {
   // to do this in the Twig template.
   if (!empty($variables['items'][0])) {
     $variables['items'][0]['content']['#options']['attributes']['class'][] = 'button';
+  }
+}
+
+/**
+ * Prepares variables for `field--iu-feature-carousel-more-link.html.twig`.
+ */
+function iu_paragraphs_preprocess_field__iu_feature_carousel_more_link(&$variables) {
+  // Add the 'more top' class to Feature Carousel more link.  In Drupal 8, we
+  // try to avoid adding classes in preprocess, however there is currently
+  // not a clean way to do this in the Twig template for link fields.
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['content']['#options']['attributes']['class'][] = 'more top';
   }
 }
 

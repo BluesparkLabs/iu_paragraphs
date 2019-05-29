@@ -2,12 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.iu_feature_carousel.iu_feature_carousel_more_link
+    - field.field.paragraph.iu_feature_carousel.iu_feature_carousel_title
     - field.field.paragraph.iu_feature_carousel.iu_feature_carousel_items
     - paragraphs.paragraphs_type.iu_feature_carousel
   module:
+    - empty_fields
     - entity_reference_revisions
     - field_layout
     - layout_discovery
+    - link
+    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -19,11 +24,32 @@ mode: default
 content:
   iu_feature_carousel_items:
     type: entity_reference_revisions_entity_view
-    weight: 0
+    weight: 2
     region: content
     label: hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+  iu_feature_carousel_more_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      empty_fields:
+        handler: ''
+    type: link
+    region: content
+  iu_feature_carousel_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
 hidden: {  }

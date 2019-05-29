@@ -1,0 +1,21 @@
+uuid: c95336d6-caec-4162-92d5-bfb66a6cf718
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.iu_feature_carousel_title
+    - paragraphs.paragraphs_type.iu_feature_carousel
+  module:
+    - text
+id: paragraph.iu_feature_carousel.iu_feature_carousel_title
+field_name: iu_feature_carousel_title
+entity_type: paragraph
+bundle: iu_feature_carousel
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

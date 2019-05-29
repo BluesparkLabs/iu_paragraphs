@@ -2,12 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.iu_feature_carousel.iu_feature_carousel_more_link
+    - field.field.paragraph.iu_feature_carousel.iu_feature_carousel_title
     - field.field.paragraph.iu_feature_carousel.iu_feature_carousel_items
     - paragraphs.paragraphs_type.iu_feature_carousel
   module:
     - field_layout
     - layout_discovery
+    - link
     - paragraphs
+    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -19,7 +23,7 @@ mode: default
 content:
   iu_feature_carousel_items:
     type: paragraphs
-    weight: 0
+    weight: 2
     region: content
     settings:
       title: feature
@@ -30,7 +34,27 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: iu_feature
+      closed_mode_threshold: 0
+      features:
+        duplicate: duplicate
+        collapse_edit_all: collapse_edit_all
     third_party_settings: {  }
+  iu_feature_carousel_more_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  iu_feature_carousel_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
 hidden:
   created: true
   status: true

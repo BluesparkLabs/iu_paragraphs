@@ -1,0 +1,26 @@
+@media screen and (min-width: 40em) {
+  .more-link-wrapper {
+    position: relative;
+  }
+
+  .more-link-wrapper .more.top {
+    position: absolute;
+    top: .1875rem;
+    line-height: 1.625rem;
+    right: 12px;
+    color: #900;
+    font-family: BentonSansRegular,'Arial Narrow',Arial,sans-serif;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+
+  .more-link-wrapper .h2 ~ .more.top,
+  .more-link-wrapper h2 ~ .more.top {
+    top: .6rem;
+  }
+
+  .more-link-wrapper .h3 ~ .more.top,
+  .more-link-wrapper h3 ~ .more.top {
+    top: .1875rem;
+  }
+}
