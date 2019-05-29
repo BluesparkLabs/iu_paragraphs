@@ -284,8 +284,10 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
 }
 
 /**
- * Helper function to setup background color classname variable for
- * templates that leverage the iu_section_background_color field.
+ * Helper function for section_background_color field.
+ *
+ * Creates a `bgcolor` template variable containing IU Framework classnames
+ * for templates that leverage the Section Background color field.
  */
 function _iu_paragraphs_preprocess_paragraph__iu_section_background_color(&$variables) {
   $p = $variables['paragraph'];
@@ -399,7 +401,8 @@ function iu_paragraphs_field_widget_paragraphs_classic_asymmetric_form_alter(&$e
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget : Paragraphs Previewer & Paragraphs Classic : entity_reference_paragraphs_previewer.
+ * Widget : Paragraphs Previewer & Paragraphs Classic :
+ * entity_reference_paragraphs_previewer.
  */
 function iu_paragraphs_field_widget_entity_reference_paragraphs_previewer_form_alter(&$element, &$form_state, $context) {
   iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
@@ -408,7 +411,8 @@ function iu_paragraphs_field_widget_entity_reference_paragraphs_previewer_form_a
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget : Paragraphs Previewer & Paragraphs EXPERIMENTAL : paragraphs_previwer.
+ * Widget : Paragraphs Previewer & Paragraphs EXPERIMENTAL :
+ * paragraphs_previwer.
  */
 function iu_paragraphs_field_widget_paragraphs_previwer_form_alter(&$element, &$form_state, $context) {
   iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
@@ -495,12 +499,12 @@ function _iu_paragraphs_iu_section_background_color_alter(array &$element, FormS
 }
 
 /**
- * Implements hook_field_widget_WIDGET_TYPE_form_alter() for the Banner
- * paragraph type.
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Alters the Banner paragraph type subform widget.
  */
 function _iu_paragraphs_iu_banner_alter(array &$element, FormStateInterface $form_state, $context) {
   $subform = &$element['subform'];
-  $paragraph = $form_state->get('paragraph');
 
   // Hide or show certain fields based on the Banner Type field. Note:
   // This feature currently requires a patch from issue #2946856 to the

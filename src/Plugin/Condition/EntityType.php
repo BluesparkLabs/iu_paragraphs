@@ -23,7 +23,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class EntityType extends ConditionPluginBase implements ContainerFactoryPluginInterface {
 
   /**
-   * An array of plugin definitions (empty array if no definitions were found). Keys are plugin IDs.
+   * An array of plugin definitions.
+   *
+   * This is an empty array if no definitions were found. Keys are plugin IDs.
    *
    * @var mixed[]
    */
@@ -101,7 +103,8 @@ class EntityType extends ConditionPluginBase implements ContainerFactoryPluginIn
       return TRUE;
     }
     foreach ($this->configuration['types'] as $type) {
-      if ($entity_id = \Drupal::routeMatch()->getParameter($type)) {
+      $entity_id = \Drupal::routeMatch()->getParameter($type);
+      if (!empty($entity_id)) {
         return TRUE;
       }
     }
@@ -128,16 +131,16 @@ class EntityType extends ConditionPluginBase implements ContainerFactoryPluginIn
       $labels = implode(', ', $labels);
 
       if (!empty($this->configuration['negate'])) {
-        return $this->t('Entity type is not @types or @last', array('@types' => $labels, '@last' => $last));
+        return $this->t('Entity type is not @types or @last', ['@types' => $labels, '@last' => $last]);
       }
-      return $this->t('Entity type is @types or @last', array('@types' => $labels, '@last' => $last));
+      return $this->t('Entity type is @types or @last', ['@types' => $labels, '@last' => $last]);
     }
     $label = reset($labels);
 
     if (!empty($this->configuration['negate'])) {
-      return $this->t('Entity type is not @type', array('@type' => $label));
+      return $this->t('Entity type is not @type', ['@type' => $label]);
     }
-    return $this->t('Entity type is @type', array('@type' => $label));
+    return $this->t('Entity type is @type', ['@type' => $label]);
   }
 
   /**
