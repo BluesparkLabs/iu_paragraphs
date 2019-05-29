@@ -165,7 +165,8 @@ function iu_paragraphs_preprocess_paragraph__iu_banner(&$variables) {
     if ($type == 'media') {
       if ($bundle == 'image') {
         $entity = $entity->field_media_image->first()->entity;
-      } elseif ($bundle == 'svg') {
+      }
+      elseif ($bundle == 'svg') {
         $entity = $entity->field_media_svg->first()->entity;
       }
     }
@@ -282,7 +283,6 @@ function iu_paragraphs_preprocess_paragraph__iu_section(&$variables) {
   $variables['styles'] = implode(' ', $styles);
 }
 
-
 /**
  * Helper function to setup background color classname variable for
  * templates that leverage the iu_section_background_color field.
@@ -350,7 +350,7 @@ function iu_paragraphs_field_widget_info_alter(array &$info) {
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget : Paragraphs Experimental : paragraphs
+ * Widget : Paragraphs Experimental : paragraphs.
  */
 function iu_paragraphs_field_widget_paragraphs_form_alter(array &$element, FormStateInterface &$form_state, $context) {
 
@@ -359,17 +359,20 @@ function iu_paragraphs_field_widget_paragraphs_form_alter(array &$element, FormS
     return;
   }
 
-  switch($element['#paragraph_type']) {
+  switch ($element['#paragraph_type']) {
     case 'iu_banner':
       _iu_paragraphs_iu_banner_alter($element, $form_state, $context);
       _iu_paragraphs_iu_section_background_color_alter($element, $form_state, $context);
       break;
+
     case 'iu_panel':
       _iu_paragraphs_iu_panel_alter($element, $form_state, $context);
       break;
+
     case 'iu_section':
       _iu_paragraphs_iu_section_background_color_alter($element, $form_state, $context);
       break;
+
     default:
       break;
   }
@@ -378,7 +381,7 @@ function iu_paragraphs_field_widget_paragraphs_form_alter(array &$element, FormS
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget type : Paragraphs EXPERIMENTAL : entity_reference_paragraphs
+ * Widget type : Paragraphs EXPERIMENTAL : entity_reference_paragraphs.
  */
 function iu_paragraphs_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
   iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
@@ -387,7 +390,7 @@ function iu_paragraphs_field_widget_entity_reference_paragraphs_form_alter(&$ele
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget : Paragraphs Classic Asymmetric : paragraphs_classic_asymmetric
+ * Widget : Paragraphs Classic Asymmetric : paragraphs_classic_asymmetric.
  */
 function iu_paragraphs_field_widget_paragraphs_classic_asymmetric_form_alter(&$element, &$form_state, $context) {
   iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
@@ -396,7 +399,7 @@ function iu_paragraphs_field_widget_paragraphs_classic_asymmetric_form_alter(&$e
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget : Paragraphs Previewer & Paragraphs Classic : entity_reference_paragraphs_previewer
+ * Widget : Paragraphs Previewer & Paragraphs Classic : entity_reference_paragraphs_previewer.
  */
 function iu_paragraphs_field_widget_entity_reference_paragraphs_previewer_form_alter(&$element, &$form_state, $context) {
   iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
@@ -405,8 +408,7 @@ function iu_paragraphs_field_widget_entity_reference_paragraphs_previewer_form_a
 /**
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  *
- * Widget : Paragraphs Previewer & Paragraphs EXPERIMENTAL : paragraphs_previwer
- *
+ * Widget : Paragraphs Previewer & Paragraphs EXPERIMENTAL : paragraphs_previwer.
  */
 function iu_paragraphs_field_widget_paragraphs_previwer_form_alter(&$element, &$form_state, $context) {
   iu_paragraphs_field_widget_paragraphs_form_alter($element, $form_state, $context);
@@ -443,7 +445,7 @@ function _iu_paragraphs_iu_section_background_color_alter(array &$element, FormS
 
   // Load secondary color from default theme.
   // @todo load secondary color from sub-theme of node from
-  // current context
+  // current context.
   $secondary_color = theme_get_setting('secondary_color', 'iu');
   if (empty($secondary_color)) {
     $secondary_color = 'none';
@@ -517,13 +519,13 @@ function _iu_paragraphs_iu_banner_alter(array &$element, FormStateInterface $for
       'iu_banner_subhead',
       'iu_banner_content_position',
       'iu_banner_link',
-      'iu_section_background_color'
+      'iu_section_background_color',
     ],
     'video' => [
       'iu_banner_mp4',
       'iu_banner_webm',
       'iu_banner_image',
-      'iu_banner_transcript'
+      'iu_banner_transcript',
     ],
     'text_overlay' => [
       'iu_banner_content_position',
@@ -538,7 +540,7 @@ function _iu_paragraphs_iu_banner_alter(array &$element, FormStateInterface $for
       'iu_banner_header',
       'iu_banner_subhead',
       'iu_banner_link',
-      'iu_section_background_color'
+      'iu_section_background_color',
     ],
   ];
 
