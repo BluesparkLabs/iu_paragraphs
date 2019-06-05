@@ -265,8 +265,11 @@ function iu_paragraphs_preprocess_paragraph__iu_panel_interactive(&$variables) {
 
   // Prep the interactive link_uri variable.
   $link_uri = $p->iu_panel_interactive_link->getValue();
-  $link_uri = !empty($link_uri[0]['uri']) ? $link_uri[0]['uri'] : '';
-  $variables['link_url'] = Url::fromUri($link_uri)->toString();
+  if (!empty($link_uri[0]['uri'])) {
+    $variables['link_url'] = Url::fromUri($link_uri[0]['uri'])->toString();
+  } else {
+    $variables['link_url'] = '';
+  }
 }
 
 /**
