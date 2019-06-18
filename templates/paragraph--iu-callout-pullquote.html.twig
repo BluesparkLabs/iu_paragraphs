@@ -40,10 +40,12 @@
  * @ingroup themeable
  */
 #}
-
-{% set image = content._field_layout.content.iu_callout_image %}
-{% set text = content._field_layout.content.iu_callout_content %}
-{% set attribution = content._field_layout.content.iu_quote_attribution %}
+{% if content._field_layout.content %}
+{% set content = content._field_layout.content %}
+{% endif %}
+{% set image = content.iu_callout_image %}
+{% set text = content.iu_callout_content %}
+{% set attribution = content.iu_quote_attribution %}
 
 {%
   set classes = [
@@ -63,7 +65,7 @@
   {% if is_pullquote %}
   <blockquote>
     {{ text }}
-    <cite>{{ attribution }}</cite>
+    {{ attribution }}
   </blockquote>
   {% else %}
   <div class="content">

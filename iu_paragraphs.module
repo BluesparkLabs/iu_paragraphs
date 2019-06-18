@@ -43,6 +43,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
     'field__iu_banner_subhead' => [
       'base hook' => 'field',
     ],
+    'field__iu_callout_content' => [
+      'base hook' => 'field',
+    ],
     'field__iu_feature_carousel_title' => [
       'base hook' => 'field',
     ],
@@ -62,6 +65,9 @@ function iu_paragraphs_theme($existing, $type, $theme, $path) {
       'base hook' => 'field',
     ],
     'field__iu_panel_header' => [
+      'base hook' => 'field',
+    ],
+    'field__iu_quote_attribution' => [
       'base hook' => 'field',
     ],
     'field__iu_section_title' => [
