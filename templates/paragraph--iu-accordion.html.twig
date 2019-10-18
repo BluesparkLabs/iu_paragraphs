@@ -51,32 +51,36 @@
 <div{{ attributes }}>
 {{ title_suffix }}
 
-<ul class="accordion" data-accordion role="tablist" aria-multiselectable="true">
+<div class="accordion" data-accordion role="tablist" aria-multiselectable="true">
   {# Loop through all of the accordion sections. #}
   {% for key, item in sections if key|first != '#' %}
-  <li class="accordion-item">
+  <div class="accordion-item" role="heading" aria-level="2">
     {% set section = item['#paragraph'] %}
     {% set section_id = key + 1 %}
     {% set panel_id = 'panel-' ~ paragraph.id.value ~ '-' ~ section_id %}
-
-    <a href="#{{ panel_id }}" role="tab" class="accordion-title" id="{{ panel_id }}-heading" aria-controls="{{ panel_id }}">
-      {# Print the accordion section title. #}
-      {{ section.iu_accordion_section_title.value }}
-    </a>
-    <div id="{{ panel_id }}" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="{{ panel_id }}-heading">
-      {# Loop through all of the accordion section bodies. #}
-      {% for body_key, body_item in section.iu_accordion_section_body %}
-        {# Use the same render array as item and set the '#paragraph'. #}
-        {% set section_body = item %}
-        {# Load the entity for the current translation #}
-        {% set section_body = section_body|merge({'#paragraph': section_body['#paragraph'].iu_accordion_section_body[body_key].entity.getTranslation(section_body['#paragraph'].langcode[0].value)}) %}
-        {# Remove the cache keys so it doesn't repeat the first value. #}
-        {% set section_body = section_body|merge({'#cache': {}}) %}
-        {# Print the compiled section body. #}
-        {{ section_body }}
-      {% endfor %}
-    </div>
-  </li>
+    <h3>
+      <button class="accordion-title" id="{{ panel_id }}-heading" aria-controls="{{ panel_id }}">
+        <strong class="accordion-label">
+          {# Print the accordion section title. #}
+          {{ section.iu_accordion_section_title.value }}
+        </strong>
+        <span class="accordion-icon" aria-hidden="true"></span>
+      </button>
+    </h3>
+  </div>
+  <div id="{{ panel_id }}" class="accordion-content" role="region" data-tab-content aria-labelledby="{{ panel_id }}-heading">
+    {# Loop through all of the accordion section bodies. #}
+    {% for body_key, body_item in section.iu_accordion_section_body %}
+      {# Use the same render array as item and set the '#paragraph'. #}
+      {% set section_body = item %}
+      {# Load the entity for the current translation #}
+      {% set section_body = section_body|merge({'#paragraph': section_body['#paragraph'].iu_accordion_section_body[body_key].entity.getTranslation(section_body['#paragraph'].langcode[0].value)}) %}
+      {# Remove the cache keys so it doesn't repeat the first value. #}
+      {% set section_body = section_body|merge({'#cache': {}}) %}
+      {# Print the compiled section body. #}
+      {{ section_body }}
+    {% endfor %}
+  </div>
   {% endfor %}
-</ul>
+</div>
 </div>
