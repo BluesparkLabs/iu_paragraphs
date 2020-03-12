@@ -4,8 +4,8 @@ dependencies:
   module:
     - paragraphs
     - webform
-id: paragraph.iu_webform
-field_name: iu_webform
+id: paragraph.iu_paragraphs_webform
+field_name: iu_paragraphs_webform
 entity_type: paragraph
 type: webform
 settings:

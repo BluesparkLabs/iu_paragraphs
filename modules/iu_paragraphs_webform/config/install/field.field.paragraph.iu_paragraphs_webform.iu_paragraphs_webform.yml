@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.iu_webform
-    - paragraphs.paragraphs_type.iu_webform
+    - field.storage.paragraph.iu_paragraphs_webform
+    - paragraphs.paragraphs_type.iu_paragraphs_webform
   module:
     - webform
-id: paragraph.iu_webform.iu_webform
-field_name: iu_webform
+id: paragraph.iu_paragraphs_webform.iu_paragraphs_webform
+field_name: iu_paragraphs_webform
 entity_type: paragraph
-bundle: iu_webform
+bundle: iu_paragraphs_webform
 label: Webform
 description: ''
 required: false
