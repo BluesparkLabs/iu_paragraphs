@@ -2,13 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.iu_paragraphs_webform.iu_paragraphs_webform
-    - paragraphs.paragraphs_type.iu_paragraphs_webform
+    - field.field.paragraph.iu_webform.iu_webform
+    - paragraphs.paragraphs_type.iu_webform
   module:
     - webform
-id: paragraph.iu_paragraphs_webform.default
+id: paragraph.iu_webform.default
 targetEntityType: paragraph
-bundle: iu_paragraphs_webform
+bundle: iu_webform
 mode: default
 content:
   iu_webform:
